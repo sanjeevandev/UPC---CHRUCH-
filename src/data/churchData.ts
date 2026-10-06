@@ -96,7 +96,7 @@ export const churchData: ChurchInfo = {
   ],
   socials: {
     facebook: "https://facebook.com",
-    instagram: "https://instagram.com",
+    instagram: "https://www.instagram.com/upc_church_bodi/",
     youtube: "https://www.youtube.com/@UnitedpentecostalchurchBODI",
     tiktok: "https://tiktok.com",
     email: "contact@upcchurch.org",
@@ -107,6 +107,7 @@ export const churchData: ChurchInfo = {
     "SEE YOU SUNDAY AT 10:00 AM!",
     "DISCOVER YOUR PEOPLE, PLACE & PURPOSE!",
     "YOU'RE INVITED TO UNITED PENTECOSTAL CHURCH!",
+    "FOLLOW US ON INSTAGRAM @upc_church_bodi",
     "WATCH US ON YOUTUBE @UnitedpentecostalchurchBODI",
     "WELCOME HOME!"
   ],
