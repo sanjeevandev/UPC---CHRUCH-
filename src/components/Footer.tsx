@@ -22,7 +22,7 @@ export const Footer = ({ onOpenPlanVisit, onOpenLocation }: FooterProps) => {
                   {churchData.shortName}
                 </span>
                 <span className="text-[10px] text-[#dd5234] uppercase tracking-widest font-semibold font-heading">
-                  UNITED PENTECOSTAL
+                  UNITED PENTECOSTAL CHURCH
                 </span>
               </div>
             </div>

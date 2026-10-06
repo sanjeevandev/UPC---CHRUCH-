@@ -60,19 +60,19 @@ export interface ChurchInfo {
 }
 
 export const churchData: ChurchInfo = {
-  name: "UNITED PENTECOSTAL COASTAL",
-  shortName: "UPC COASTAL",
+  name: "UNITED PENTECOSTAL CHURCH",
+  shortName: "UPC",
   tagline: "NO ONE SHOULD WALK THROUGH LIFE ALONE",
   subTagline: "Discover your people, place, and purpose in God's presence.",
   pastorName: "Pastor Rajan Joel",
   pastorTitle: "Lead Pastor",
-  pastorBio: `We believe that God has an extraordinary purpose for every single person. In early days, we sensed God's clear calling to build a life-giving, spirit-empowered, Bible-believing family here on the coast. Our dream is to see broken hearts healed, families restored, and our city transformed by the unconditional love and power of Jesus Christ. Whether you have questions about faith or are looking for a spiritual home, you are always welcome here!`,
+  pastorBio: `We believe that God has an extraordinary purpose for every single person. In early days, we sensed God's clear calling to build a life-giving, spirit-empowered, Bible-believing family. Our dream is to see broken hearts healed, families restored, and our community transformed by the unconditional love and power of Jesus Christ. Whether you have questions about faith or are looking for a spiritual home, you are always welcome here!`,
   location: {
-    address: "Coastal Sanctuary Campus",
-    cityState: "Coastal Region (Click for Directions)",
+    address: "United Pentecostal Church Sanctuary",
+    cityState: "Bodi Campus (Click for Directions)",
     googleMapsUrl: "https://maps.app.goo.gl/UdonX2UpNLX8pDzf6",
     parkingInfo: "Free dedicated parking available on campus with friendly guest greeting team",
-    landmark: "Conveniently accessible near the coastal highway"
+    landmark: "Conveniently accessible near main road"
   },
   serviceTimes: [
     {
@@ -99,14 +99,14 @@ export const churchData: ChurchInfo = {
     instagram: "https://instagram.com",
     youtube: "https://www.youtube.com/@UnitedpentecostalchurchBODI",
     tiktok: "https://tiktok.com",
-    email: "contact@upccoastal.org",
+    email: "contact@upcchurch.org",
     phone: "+1 (800) 555-0199"
   },
   marqueeItems: [
     "WE CAN'T WAIT TO MEET YOU!",
     "SEE YOU SUNDAY AT 10:00 AM!",
     "DISCOVER YOUR PEOPLE, PLACE & PURPOSE!",
-    "YOU'RE INVITED TO UNITED PENTECOSTAL COASTAL!",
+    "YOU'RE INVITED TO UNITED PENTECOSTAL CHURCH!",
     "WATCH US ON YOUTUBE @UnitedpentecostalchurchBODI",
     "WELCOME HOME!"
   ],

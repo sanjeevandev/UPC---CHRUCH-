@@ -1,4 +1,4 @@
-# ⛪ United Pentecostal Coastal (UPC Coastal)
+# ⛪ United Pentecostal Church (UPC)
 
 A modern, responsive, and cinematic church website built with React, TypeScript, Tailwind CSS, and Framer Motion. Inspired by contemporary church web design with video hero banners, continuous marquees, parallax connect groups, sermon media player, and interactive visitor onboarding.
 
