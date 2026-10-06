@@ -76,7 +76,7 @@ export const Footer = ({ onOpenPlanVisit, onOpenLocation }: FooterProps) => {
               </li>
               <li>
                 <a href="#ministries" className="hover:text-white transition-colors">
-                  Kids & Youth Ministries
+                  Children, Youth & Women
                 </a>
               </li>
               <li>
@@ -97,23 +97,27 @@ export const Footer = ({ onOpenPlanVisit, onOpenLocation }: FooterProps) => {
             </ul>
           </div>
 
-          {/* Service Times Recap */}
+          {/* Sunday Service & Prayer Times */}
           <div>
             <h4 className="font-heading font-bold text-base uppercase tracking-wider text-[#dd5234] mb-4">
-              Gathering Times
+              Sunday Gatherings
             </h4>
-            <div className="space-y-3 text-xs sm:text-sm text-neutral-400">
+            <div className="space-y-2.5 text-xs text-neutral-400">
               <div>
-                <p className="font-heading font-bold text-white uppercase text-sm">Sunday Service</p>
-                <p className="text-neutral-400">Every Sunday at 10:00 AM</p>
+                <p className="font-heading font-bold text-white uppercase text-xs">Early Morning Service</p>
+                <p className="text-neutral-300">5:30 AM – 7:00 AM</p>
               </div>
               <div>
-                <p className="font-heading font-bold text-white uppercase text-sm">Midweek Prayer</p>
-                <p className="text-neutral-400">Wednesdays at 7:00 PM</p>
+                <p className="font-heading font-bold text-white uppercase text-xs">Main Morning Worship</p>
+                <p className="text-neutral-300">9:00 AM – 12:30 PM</p>
               </div>
               <div>
-                <p className="font-heading font-bold text-white uppercase text-sm">Youth & Young Adults</p>
-                <p className="text-neutral-400">Fridays at 6:30 PM</p>
+                <p className="font-heading font-bold text-white uppercase text-xs">Children's Sunday Class</p>
+                <p className="text-neutral-300">10:30 AM – 11:50 AM</p>
+              </div>
+              <div>
+                <p className="font-heading font-bold text-white uppercase text-xs">Youth & Women's Prayer</p>
+                <p className="text-neutral-300">1:00 PM – 2:00 PM</p>
               </div>
             </div>
           </div>

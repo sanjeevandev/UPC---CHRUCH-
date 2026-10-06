@@ -17,42 +17,49 @@ export const QuickInfoCards: React.FC<QuickInfoCardsProps> = ({
         {/* Section Heading */}
         <div className="text-center max-w-3xl mx-auto mb-16">
           <span className="text-xs font-heading font-bold uppercase tracking-widest text-[#dd5234] bg-white px-3.5 py-1.5 shadow-sm inline-block mb-3">
-            Join Us This Week
+            Join Us Every Sunday
           </span>
           <h2 className="font-heading font-extrabold text-3xl sm:text-5xl uppercase tracking-tight text-[#111111]">
-            Everything You Need To Know
+            Gathering Times & Info
           </h2>
           <p className="mt-3 text-base sm:text-lg text-neutral-600 font-normal">
-            Whether it's your first time or you're looking for a church family, you're always invited.
+            Whether you are joining early for prayer or attending our main worship, there is a place for you.
           </p>
         </div>
 
         {/* 3-Column Card Layout */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           {/* Card 1: Service Times */}
-          <div className="bg-white p-8 sm:p-10 shadow-lg border-t-4 border-[#dd5234] flex flex-col justify-between group hover:shadow-2xl transition-all duration-300">
+          <div className="bg-white p-8 sm:p-9 shadow-lg border-t-4 border-[#dd5234] flex flex-col justify-between group hover:shadow-2xl transition-all duration-300">
             <div>
               <div className="w-14 h-14 bg-[#f7f2e7] text-[#dd5234] flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
                 <Clock className="w-7 h-7" />
               </div>
-              <h3 className="font-heading font-bold text-2xl uppercase tracking-wide text-[#111111] mb-3">
-                Service Times
+              <h3 className="font-heading font-bold text-2xl uppercase tracking-wide text-[#111111] mb-2">
+                Sunday Schedule
               </h3>
-              <p className="text-neutral-600 text-sm mb-6 leading-relaxed">
-                Join our uplifting Sunday gathering and weekly life-giving prayer sessions.
+              <p className="text-neutral-600 text-xs mb-5 leading-relaxed">
+                Join our life-giving Sunday gatherings and focused prayer sessions.
               </p>
 
-              <div className="space-y-4 pt-2 border-t border-neutral-100">
+              <div className="space-y-3.5 pt-2 border-t border-neutral-100">
                 {churchData.serviceTimes.map((item, idx) => (
-                  <div key={idx} className="flex flex-col">
-                    <span className="text-xs font-bold text-[#dd5234] uppercase tracking-wider">
-                      {item.day}
-                    </span>
-                    <span className="text-lg font-heading font-bold text-neutral-900">
+                  <div key={idx} className="flex flex-col pb-2.5 border-b border-neutral-100/70 last:border-0 last:pb-0">
+                    <div className="flex items-center justify-between gap-2">
+                      <span className="text-xs font-bold text-[#dd5234] uppercase tracking-wider">
+                        {item.title}
+                      </span>
+                      {item.badge && (
+                        <span className="text-[10px] font-heading font-bold uppercase tracking-widest bg-neutral-100 text-neutral-700 px-2 py-0.5">
+                          {item.badge}
+                        </span>
+                      )}
+                    </div>
+                    <span className="text-base sm:text-lg font-heading font-extrabold text-neutral-900 mt-0.5">
                       {item.time}
                     </span>
-                    <span className="text-xs text-neutral-500">
-                      {item.title}
+                    <span className="text-[11px] text-neutral-500 leading-tight">
+                      {item.note}
                     </span>
                   </div>
                 ))}
@@ -71,16 +78,16 @@ export const QuickInfoCards: React.FC<QuickInfoCardsProps> = ({
           </div>
 
           {/* Card 2: Location & Directions */}
-          <div className="bg-white p-8 sm:p-10 shadow-lg border-t-4 border-[#111111] flex flex-col justify-between group hover:shadow-2xl transition-all duration-300">
+          <div className="bg-white p-8 sm:p-9 shadow-lg border-t-4 border-[#111111] flex flex-col justify-between group hover:shadow-2xl transition-all duration-300">
             <div>
               <div className="w-14 h-14 bg-[#f7f2e7] text-[#111111] flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
                 <MapPin className="w-7 h-7 text-[#dd5234]" />
               </div>
-              <h3 className="font-heading font-bold text-2xl uppercase tracking-wide text-[#111111] mb-3">
-                Location & Parking
+              <h3 className="font-heading font-bold text-2xl uppercase tracking-wide text-[#111111] mb-2">
+                Sanctuary & Campus
               </h3>
-              <p className="text-neutral-600 text-sm mb-6 leading-relaxed">
-                Convenient campus with hassle-free guest parking and warm door hosts.
+              <p className="text-neutral-600 text-xs mb-5 leading-relaxed">
+                Convenient campus in Bodi with guest parking and friendly greeting hosts.
               </p>
 
               <div className="bg-[#f7f2e7] p-5 rounded-none space-y-2 mb-4">
@@ -91,6 +98,9 @@ export const QuickInfoCards: React.FC<QuickInfoCardsProps> = ({
                   {churchData.location.address}
                 </p>
                 <p className="text-xs text-neutral-600">
+                  {churchData.location.cityState}
+                </p>
+                <p className="text-xs text-neutral-500">
                   {churchData.location.landmark}
                 </p>
                 <div className="pt-2 text-xs text-emerald-700 font-medium flex items-center gap-1.5">
@@ -121,30 +131,30 @@ export const QuickInfoCards: React.FC<QuickInfoCardsProps> = ({
           </div>
 
           {/* Card 3: Plan Your Visit */}
-          <div className="bg-[#111111] text-white p-8 sm:p-10 shadow-lg border-t-4 border-[#dd5234] flex flex-col justify-between group hover:shadow-2xl transition-all duration-300">
+          <div className="bg-[#111111] text-white p-8 sm:p-9 shadow-lg border-t-4 border-[#dd5234] flex flex-col justify-between group hover:shadow-2xl transition-all duration-300">
             <div>
               <div className="w-14 h-14 bg-white/10 text-[#dd5234] flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
                 <CalendarCheck className="w-7 h-7" />
               </div>
-              <h3 className="font-heading font-bold text-2xl uppercase tracking-wide text-white mb-3">
+              <h3 className="font-heading font-bold text-2xl uppercase tracking-wide text-white mb-2">
                 Plan Your Visit
               </h3>
-              <p className="text-neutral-300 text-sm mb-6 leading-relaxed">
+              <p className="text-neutral-300 text-xs mb-5 leading-relaxed">
                 Let us know you're coming so our host team can roll out the VIP welcome for you!
               </p>
 
               <ul className="space-y-3 text-xs text-neutral-300">
                 <li className="flex items-center gap-2.5">
                   <div className="w-1.5 h-1.5 rounded-full bg-[#dd5234]" />
-                  <span>Reserved VIP Parking & Guided Tour</span>
+                  <span>Reserved VIP Parking & Front Porch Welcome</span>
                 </li>
                 <li className="flex items-center gap-2.5">
                   <div className="w-1.5 h-1.5 rounded-full bg-[#dd5234]" />
-                  <span>Pre-registered, secure Kids Check-in</span>
+                  <span>Children's Class (10:30 AM - 11:50 AM) Check-in</span>
                 </li>
                 <li className="flex items-center gap-2.5">
                   <div className="w-1.5 h-1.5 rounded-full bg-[#dd5234]" />
-                  <span>Free Welcome Gift & Hot Coffee</span>
+                  <span>Free Welcome Gift Packet</span>
                 </li>
                 <li className="flex items-center gap-2.5">
                   <div className="w-1.5 h-1.5 rounded-full bg-[#dd5234]" />

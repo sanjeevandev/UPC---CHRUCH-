@@ -18,6 +18,7 @@ export interface ChurchInfo {
     day: string;
     time: string;
     note: string;
+    badge?: string;
   }[];
   socials: {
     instagram: string;
@@ -74,22 +75,39 @@ export const churchData: ChurchInfo = {
   },
   serviceTimes: [
     {
-      title: "Main Sunday Gathering",
+      title: "Early Morning Service",
       day: "Every Sunday",
-      time: "10:00 AM",
-      note: "Spirit-filled worship, vibrant kids ministry & uplifting Word"
+      time: "5:30 AM – 7:00 AM",
+      note: "Early morning prayer, devotion & anointing gathering",
+      badge: "Dawn Gathering"
     },
     {
-      title: "Midweek Prayer & Bible Study",
-      day: "Every Wednesday",
-      time: "7:00 PM",
-      note: "Deeper discipleship, intimate fellowship & prayer"
+      title: "Main Morning Worship Service",
+      day: "Every Sunday",
+      time: "9:00 AM – 12:30 PM",
+      note: "Full spirit-filled praise, powerful worship & anointed preaching",
+      badge: "Main Service"
     },
     {
-      title: "Youth & Young Adults",
-      day: "Every Friday",
-      time: "6:30 PM",
-      note: "Community, live acoustic worship & engaging discussions"
+      title: "Children's Sunday Class",
+      day: "Every Sunday",
+      time: "10:30 AM – 11:50 AM",
+      note: "Fun, engaging Bible teaching, songs & activities for kids",
+      badge: "Kids Kingdom"
+    },
+    {
+      title: "Youth Prayer Fellowship",
+      day: "Every Sunday",
+      time: "1:00 PM – 2:00 PM",
+      note: "Dynamic prayer, empowerment & encouragement for young people",
+      badge: "Youth"
+    },
+    {
+      title: "Women's Prayer Fellowship",
+      day: "Every Sunday",
+      time: "1:00 PM – 2:00 PM",
+      note: "Sisters in Christ interceding for families, church & community",
+      badge: "Women"
     }
   ],
   socials: {
@@ -100,37 +118,37 @@ export const churchData: ChurchInfo = {
   },
   marqueeItems: [
     "WE CAN'T WAIT TO MEET YOU!",
-    "SEE YOU SUNDAY AT 10:00 AM!",
-    "DISCOVER YOUR PEOPLE, PLACE & PURPOSE!",
-    "YOU'RE INVITED TO UNITED PENTECOSTAL CHURCH!",
+    "SUNDAY SERVICES: 5:30 AM & 9:00 AM!",
+    "CHILDREN'S SUNDAY CLASS: 10:30 AM – 11:50 AM!",
+    "YOUTH & WOMEN'S PRAYER: 1:00 PM – 2:00 PM!",
     "FOLLOW US ON INSTAGRAM @upc_church_bodi",
     "WATCH US ON YOUTUBE @UnitedpentecostalchurchBODI",
-    "WELCOME HOME!"
+    "WELCOME HOME TO UPC!"
   ],
   ministries: [
     {
-      title: "Kids & Family Kingdom",
-      description: "Safe, fun, and engaging environment where kids learn Bible truths through interactive worship, games, and crafts.",
+      title: "Children's Sunday Class",
+      description: "Dedicated Sunday School from 10:30 AM to 11:50 AM with interactive Bible stories, moral lessons, and joy-filled worship.",
       image: "https://images.unsplash.com/photo-1485546246426-74dc88dec4d9?auto=format&fit=crop&w=800&q=80",
-      category: "Ages 0 - 12"
+      category: "Every Sunday 10:30 AM"
     },
     {
-      title: "Youth & Young Adults",
-      description: "Empowering the next generation to live fearlessly for Christ through authentic friendships and purpose-driven gatherings.",
+      title: "Youth Prayer & Ministry",
+      description: "Empowering the next generation with weekly youth prayer every Sunday at 1:00 PM for spiritual fire and purpose.",
       image: "https://images.unsplash.com/photo-1529156069898-49953e39b3ac?auto=format&fit=crop&w=800&q=80",
-      category: "Ages 13 - 30"
+      category: "Every Sunday 1:00 PM"
     },
     {
-      title: "Connect & Life Groups",
-      description: "Small circle gatherings meeting weekly across the community to share meals, study scripture, and do life together.",
+      title: "Women's Prayer Fellowship",
+      description: "United in powerful intercession every Sunday at 1:00 PM, praying for homes, breakthrough, and revival.",
       image: "https://images.unsplash.com/photo-1511632765486-a01980e01a18?auto=format&fit=crop&w=800&q=80",
-      category: "Weekly Community"
+      category: "Every Sunday 1:00 PM"
     },
     {
-      title: "Worship & Creative Arts",
-      description: "Dedicated to creating an atmosphere where hearts encounter the transformative manifest presence of God.",
+      title: "Spirit-Filled Worship & Preaching",
+      description: "Encounter God's presence during our Early Morning (5:30 AM) and Main Morning (9:00 AM) services led by Pastor Rajan Joel.",
       image: "https://images.unsplash.com/photo-1516450360452-9312f5e86fc7?auto=format&fit=crop&w=800&q=80",
-      category: "Creative & Music"
+      category: "Sunday 5:30 AM & 9:00 AM"
     }
   ],
   latestSermon: {

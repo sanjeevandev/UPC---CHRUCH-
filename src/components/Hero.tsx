@@ -1,6 +1,6 @@
 import React from 'react';
 import { churchData } from '../data/churchData';
-import { Calendar, Users, Play, MapPin } from 'lucide-react';
+import { Calendar, Users, Play, MapPin, Clock } from 'lucide-react';
 
 interface HeroProps {
   onOpenPlanVisit: (withKids?: boolean) => void;
@@ -25,7 +25,6 @@ export const Hero: React.FC<HeroProps> = ({
           poster="https://images.unsplash.com/photo-1510936111840-65e151ad71bb?auto=format&fit=crop&w=1920&q=80"
           className="w-full h-full object-cover scale-105 filter brightness-75 contrast-110"
         >
-          {/* Public high quality church worship ambient video */}
           <source
             src="https://media.thechurchcoassets.com/accounts/49/d55b27ee-bb9f-4a81-b08e-bd10bb27e1e2-./Website%20-%20Home%20Header%20Video%20NEW%20LOCATION%20UPDATE%20v3.mp4"
             type="video/mp4"
@@ -43,7 +42,7 @@ export const Hero: React.FC<HeroProps> = ({
           Welcome to {churchData.name}
         </div>
 
-        {/* Massive Signature Headline (Valley Church Style) */}
+        {/* Massive Signature Headline */}
         <h1 className="font-heading font-extrabold text-3xl sm:text-5xl md:text-7xl lg:text-8xl tracking-tight uppercase leading-[0.95] max-w-4xl drop-shadow-lg mb-6">
           NO ONE SHOULD <br className="hidden sm:inline" />
           <span className="text-[#dd5234]">WALK THROUGH LIFE</span> <br className="hidden sm:inline" />
@@ -56,7 +55,7 @@ export const Hero: React.FC<HeroProps> = ({
         </p>
 
         {/* Primary Action Buttons */}
-        <div className="flex flex-col sm:flex-row items-stretch sm:items-center justify-center gap-4 w-full max-w-xl mb-12">
+        <div className="flex flex-col sm:flex-row items-stretch sm:items-center justify-center gap-4 w-full max-w-xl mb-10">
           <button
             onClick={() => onOpenPlanVisit(false)}
             className="bg-[#dd5234] hover:bg-[#b1422a] text-white px-8 py-4 font-heading font-bold uppercase tracking-widest text-sm sm:text-base transition-all duration-200 shadow-2xl transform hover:-translate-y-0.5 flex items-center justify-center gap-2.5 cursor-pointer rounded-none"
@@ -74,20 +73,28 @@ export const Hero: React.FC<HeroProps> = ({
           </button>
         </div>
 
+        {/* Sunday Timings Highlight Banner */}
+        <div className="bg-black/50 backdrop-blur-md border border-white/15 px-4 py-2.5 mb-8 inline-flex flex-wrap items-center justify-center gap-x-5 gap-y-1.5 text-xs sm:text-sm text-neutral-200">
+          <span className="flex items-center gap-1.5 text-[#dd5234] font-heading font-bold uppercase">
+            <Clock className="w-4 h-4" /> Sunday Services:
+          </span>
+          <span className="font-medium">Early: <strong className="text-white">5:30 AM</strong></span>
+          <span className="text-neutral-500">•</span>
+          <span className="font-medium">Main: <strong className="text-white">9:00 AM – 12:30 PM</strong></span>
+          <span className="text-neutral-500">•</span>
+          <span className="font-medium">Kids: <strong className="text-white">10:30 AM</strong></span>
+          <span className="text-neutral-500">•</span>
+          <span className="font-medium">Youth & Women's Prayer: <strong className="text-white">1:00 PM</strong></span>
+        </div>
+
         {/* Secondary Quick Info Pill Bar */}
         <div className="flex flex-wrap items-center justify-center gap-4 sm:gap-8 text-xs sm:text-sm text-neutral-300 border-t border-white/15 pt-6 w-full max-w-3xl">
-          <div className="flex items-center gap-2">
-            <span className="w-2 h-2 rounded-full bg-[#dd5234]" />
-            <span className="font-heading uppercase tracking-wider font-semibold text-white">Sunday Service:</span>
-            <span>10:00 AM</span>
-          </div>
-
           <button
             onClick={onOpenLocation}
             className="flex items-center gap-1.5 hover:text-[#dd5234] transition-colors cursor-pointer"
           >
             <MapPin className="w-4 h-4 text-[#dd5234]" />
-            <span className="underline underline-offset-4 font-medium">Coastal Sanctuary Directions</span>
+            <span className="underline underline-offset-4 font-medium">Bodi Sanctuary Directions</span>
           </button>
 
           <button

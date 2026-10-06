@@ -17,7 +17,7 @@ export const PlanVisitModal: React.FC<PlanVisitModalProps> = ({
   const [fullName, setFullName] = useState('');
   const [email, setEmail] = useState('');
   const [phone, setPhone] = useState('');
-  const [serviceDate, setServiceDate] = useState('This Sunday - 10:00 AM');
+  const [serviceDate, setServiceDate] = useState('Sunday Morning Main Service (9:00 AM – 12:30 PM)');
   const [bringingKids, setBringingKids] = useState(initialWithKids);
   const [kidsCount, setKidsCount] = useState('1');
   const [submitted, setSubmitted] = useState(false);
@@ -58,7 +58,7 @@ export const PlanVisitModal: React.FC<PlanVisitModalProps> = ({
               We Can't Wait To Meet You, {fullName}!
             </h3>
             <p className="text-sm text-neutral-600 max-w-md mx-auto mb-6 leading-relaxed">
-              We have reserved your VIP greeting for <strong>{serviceDate}</strong> at {churchData.name}. Our team will have a free welcome packet and hot coffee ready for you at the front entrance!
+              We have reserved your VIP greeting for <strong>{serviceDate}</strong> at {churchData.name}. Our team will have a free welcome packet ready for you at the front entrance!
             </p>
 
             <div className="bg-[#f7f2e7] p-4 text-left text-xs space-y-2 mb-6 border-l-4 border-[#dd5234]">
@@ -69,12 +69,12 @@ export const PlanVisitModal: React.FC<PlanVisitModalProps> = ({
               {bringingKids && (
                 <div className="flex items-center gap-2 text-neutral-800 font-semibold">
                   <ShieldCheck className="w-4 h-4 text-emerald-600" />
-                  <span>{kidsCount} Kid(s) pre-registered for secure Children's Kingdom</span>
+                  <span>{kidsCount} Kid(s) pre-registered for Children's Class (10:30 AM – 11:50 AM)</span>
                 </div>
               )}
               <div className="flex items-center gap-2 text-neutral-800 font-semibold">
                 <Gift className="w-4 h-4 text-[#dd5234]" />
-                <span>Free Gift waiting at the Welcome Center</span>
+                <span>Free Welcome Gift waiting at the Front Desk</span>
               </div>
             </div>
 
@@ -95,14 +95,14 @@ export const PlanVisitModal: React.FC<PlanVisitModalProps> = ({
                 Plan Your Visit
               </h3>
               <p className="text-xs sm:text-sm text-neutral-600 mt-1">
-                Let us know when you're coming so we can roll out the red carpet for you and your family!
+                Let us know which Sunday service you are attending so we can welcome you warmly!
               </p>
             </div>
 
             {/* VIP Perks Bar */}
             <div className="grid grid-cols-3 gap-2 bg-[#f7f2e7] p-3 text-center text-[11px] font-semibold text-neutral-700 mb-6">
-              <div>🚗 VIP Parking</div>
-              <div>☕ Free Coffee</div>
+              <div>🚗 Free Parking</div>
+              <div>📖 Bible Ministry</div>
               <div>🎁 Welcome Gift</div>
             </div>
 
@@ -151,16 +151,28 @@ export const PlanVisitModal: React.FC<PlanVisitModalProps> = ({
 
               <div>
                 <label className="block text-xs uppercase font-heading font-bold text-neutral-700 mb-1">
-                  Select Service Date *
+                  Select Sunday Gathering / Service *
                 </label>
                 <select
                   value={serviceDate}
                   onChange={(e) => setServiceDate(e.target.value)}
                   className="w-full px-4 py-2.5 bg-neutral-50 border border-neutral-300 text-sm focus:border-[#dd5234] focus:outline-none"
                 >
-                  <option value="This Sunday - 10:00 AM">This Sunday — 10:00 AM (Main Service)</option>
-                  <option value="Next Sunday - 10:00 AM">Next Sunday — 10:00 AM (Main Service)</option>
-                  <option value="Midweek Wednesday - 7:00 PM">This Wednesday — 7:00 PM (Prayer & Word)</option>
+                  <option value="Sunday Early Morning Service (5:30 AM – 7:00 AM)">
+                    Sunday Early Morning Service (5:30 AM – 7:00 AM)
+                  </option>
+                  <option value="Sunday Morning Main Service (9:00 AM – 12:30 PM)">
+                    Sunday Morning Main Service (9:00 AM – 12:30 PM)
+                  </option>
+                  <option value="Sunday Children's Class (10:30 AM – 11:50 AM)">
+                    Sunday Children's Class (10:30 AM – 11:50 AM)
+                  </option>
+                  <option value="Sunday Youth Prayer Fellowship (1:00 PM – 2:00 PM)">
+                    Sunday Youth Prayer Fellowship (1:00 PM – 2:00 PM)
+                  </option>
+                  <option value="Sunday Women's Prayer Fellowship (1:00 PM – 2:00 PM)">
+                    Sunday Women's Prayer Fellowship (1:00 PM – 2:00 PM)
+                  </option>
                 </select>
               </div>
 
@@ -174,13 +186,13 @@ export const PlanVisitModal: React.FC<PlanVisitModalProps> = ({
                     className="w-4 h-4 text-[#dd5234] accent-[#dd5234] rounded"
                   />
                   <span className="text-xs font-heading font-bold uppercase tracking-wide text-neutral-800">
-                    I am bringing children (Kids Church Fast-Track)
+                    I am bringing children (Children's Class 10:30 AM – 11:50 AM)
                   </span>
                 </label>
 
                 {bringingKids && (
                   <div className="mt-3 pt-3 border-t border-neutral-200 flex items-center justify-between">
-                    <span className="text-xs text-neutral-600 font-medium">How many kids?</span>
+                    <span className="text-xs text-neutral-600 font-medium">How many children?</span>
                     <select
                       value={kidsCount}
                       onChange={(e) => setKidsCount(e.target.value)}
@@ -204,7 +216,7 @@ export const PlanVisitModal: React.FC<PlanVisitModalProps> = ({
               </button>
 
               <p className="text-[11px] text-center text-neutral-500 pt-1">
-                We respect your privacy. No spam, just a friendly welcome!
+                We look forward to worshipping with you!
               </p>
             </form>
           </div>
