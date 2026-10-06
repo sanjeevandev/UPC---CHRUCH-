@@ -20,10 +20,8 @@ export interface ChurchInfo {
     note: string;
   }[];
   socials: {
-    facebook: string;
     instagram: string;
     youtube: string;
-    tiktok: string;
     email: string;
     phone: string;
   };
@@ -95,10 +93,8 @@ export const churchData: ChurchInfo = {
     }
   ],
   socials: {
-    facebook: "https://facebook.com",
     instagram: "https://www.instagram.com/upc_church_bodi/",
     youtube: "https://www.youtube.com/@UnitedpentecostalchurchBODI",
-    tiktok: "https://tiktok.com",
     email: "contact@upcchurch.org",
     phone: "+1 (800) 555-0199"
   },
