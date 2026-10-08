@@ -6,6 +6,7 @@ export interface ChurchInfo {
   subTagline: string;
   pastorName: string;
   pastorTitle: string;
+  pastorImage: string;
   pastorBio: string;
   location: {
     address: string;
@@ -67,6 +68,7 @@ export const churchData: ChurchInfo = {
   subTagline: "Discover your people, place, and purpose in God's presence.",
   pastorName: "Pastor Rajan Joel",
   pastorTitle: "Lead Pastor",
+  pastorImage: "/pastor-rajan-joel.jpg",
   pastorBio: `We believe that God has an extraordinary purpose for every single person. In early days, we sensed God's clear calling to build a life-giving, spirit-empowered, Bible-believing family. Our dream is to see broken hearts healed, families restored, and our community transformed by the unconditional love and power of Jesus Christ. Whether you have questions about faith or are looking for a spiritual home, you are always welcome here!`,
   location: {
     address: "United Pentecostal Church Sanctuary",

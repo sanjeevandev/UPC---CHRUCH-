@@ -20,9 +20,9 @@ export const PastoralWelcome: React.FC<PastoralWelcomeProps> = ({ onOpenPlanVisi
               {/* Main Image */}
               <div className="relative overflow-hidden shadow-xl">
                 <img
-                  src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&w=1000&q=80"
+                  src={churchData.pastorImage}
                   alt={`${churchData.pastorName} - ${churchData.pastorTitle}`}
-                  className="w-full h-[380px] sm:h-[450px] object-cover filter contrast-105 hover:scale-105 transition-transform duration-700"
+                  className="w-full h-[380px] sm:h-[450px] object-cover object-top filter contrast-105 hover:scale-105 transition-transform duration-700"
                 />
                 
                 {/* Image Overlay Badge */}
