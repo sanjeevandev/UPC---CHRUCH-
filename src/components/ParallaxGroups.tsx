@@ -36,7 +36,7 @@ export const ParallaxGroups: React.FC = () => {
     <>
       <section
         id="groups"
-        className="relative py-28 sm:py-36 text-white overflow-hidden bg-fixed-parallax"
+        className="relative py-16 sm:py-24 text-white overflow-hidden bg-fixed-parallax"
         style={{
           backgroundImage: `url('https://images.unsplash.com/photo-1511632765486-a01980e01a18?auto=format&fit=crop&w=1920&q=80')`
         }}
@@ -45,26 +45,26 @@ export const ParallaxGroups: React.FC = () => {
         <div className="absolute inset-0 bg-black/65" />
 
         {/* Content */}
-        <div className="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 text-center">
-          <span className="text-xs font-heading font-bold uppercase tracking-widest text-[#dd5234] bg-black/60 px-4 py-1.5 border border-[#dd5234]/40 inline-block mb-4">
+        <div className="relative z-10 max-w-3xl mx-auto px-4 sm:px-6 text-center">
+          <span className="text-xs font-heading font-bold uppercase tracking-widest text-[#dd5234] bg-black/60 px-3.5 py-1 border border-[#dd5234]/40 inline-block mb-3.5">
             Connect Groups & Community
           </span>
 
-          <h2 className="font-heading font-extrabold text-3xl sm:text-5xl md:text-6xl uppercase tracking-tight leading-tight mb-6">
+          <h2 className="font-heading font-extrabold text-2xl sm:text-4xl md:text-5xl uppercase tracking-tight leading-tight mb-4">
             Find Your People. <br />
             <span className="text-[#dd5234]">Grow in Faith.</span> <br />
             Do Life Together.
           </h2>
 
-          <p className="text-base sm:text-xl text-neutral-200 font-light max-w-2xl mx-auto mb-10 leading-relaxed">
+          <p className="text-sm sm:text-base md:text-lg text-neutral-200 font-light max-w-xl mx-auto mb-8 leading-relaxed">
             Real life happens in circles, not just in rows. Connect with people who will encourage you, pray with you, and stand with you.
           </p>
 
           <button
             onClick={() => setModalOpen(true)}
-            className="bg-[#dd5234] hover:bg-[#b1422a] text-white px-9 py-4 font-heading font-bold uppercase tracking-widest text-sm transition-all duration-200 shadow-2xl transform hover:-translate-y-1 inline-flex items-center gap-2 cursor-pointer"
+            className="bg-[#dd5234] hover:bg-[#b1422a] text-white px-7 py-3.5 font-heading font-bold uppercase tracking-wider text-xs sm:text-sm transition-all duration-200 shadow-xl transform hover:-translate-y-0.5 inline-flex items-center gap-2 cursor-pointer"
           >
-            <Users className="w-5 h-5" />
+            <Users className="w-4 h-4" />
             <span>Explore Connect Groups</span>
             <ArrowRight className="w-4 h-4" />
           </button>

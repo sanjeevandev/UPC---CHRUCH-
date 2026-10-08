@@ -33,7 +33,7 @@ export const PrayerRequestSection: React.FC = () => {
   return (
     <section
       id="prayer"
-      className="relative py-24 sm:py-32 text-white bg-fixed-parallax"
+      className="relative py-16 sm:py-24 text-white bg-fixed-parallax"
       style={{
         backgroundImage: `url('https://images.unsplash.com/photo-1544427920-c49ccfb85579?auto=format&fit=crop&w=1920&q=80')`
       }}
@@ -42,20 +42,20 @@ export const PrayerRequestSection: React.FC = () => {
       <div className="absolute inset-0 bg-black/80 via-black/70 to-black/85" />
 
       <div className="relative z-10 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center max-w-2xl mx-auto mb-12">
-          <span className="text-xs font-heading font-bold uppercase tracking-widest text-[#dd5234] bg-white/10 px-4 py-1.5 border border-white/20 inline-block mb-3">
+        <div className="text-center max-w-2xl mx-auto mb-10">
+          <span className="text-xs font-heading font-bold uppercase tracking-widest text-[#dd5234] bg-white/10 px-3.5 py-1 border border-white/20 inline-block mb-2.5">
             Intercession & Spiritual Support
           </span>
-          <h2 className="font-heading font-extrabold text-3xl sm:text-5xl uppercase tracking-tight text-white mb-3">
+          <h2 className="font-heading font-extrabold text-2xl sm:text-4xl uppercase tracking-tight text-white mb-2.5">
             We Believe In The Power Of Prayer
           </h2>
-          <p className="text-sm sm:text-base text-neutral-300 font-light leading-relaxed">
+          <p className="text-xs sm:text-sm text-neutral-300 font-light leading-relaxed">
             "For where two or three gather in my name, there am I with them." Whatever mountain you are facing, <strong className="text-white font-medium">{churchData.pastorName}</strong> and our prayer intercessors are ready to stand in faith with you.
           </p>
         </div>
 
         {/* Prayer Form Card */}
-        <div className="bg-neutral-900/95 border border-neutral-800 p-6 sm:p-10 shadow-2xl max-w-2xl mx-auto backdrop-blur-md">
+        <div className="bg-neutral-900/95 border border-neutral-800 p-5 sm:p-8 shadow-2xl max-w-xl mx-auto backdrop-blur-md">
           {submitted ? (
             <div className="text-center py-8">
               <div className="w-16 h-16 bg-emerald-500/20 text-emerald-400 rounded-full flex items-center justify-center mx-auto mb-4 border border-emerald-500/40">

@@ -8,29 +8,29 @@ interface PastoralWelcomeProps {
 
 export const PastoralWelcome: React.FC<PastoralWelcomeProps> = ({ onOpenPlanVisit }) => {
   return (
-    <section id="about" className="py-20 sm:py-28 bg-white text-[#303030] overflow-hidden">
+    <section id="about" className="py-14 sm:py-20 bg-white text-[#303030] overflow-hidden">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-center">
           {/* Left Column: Lead Pastor Photo Frame */}
           <div className="lg:col-span-5 relative">
-            <div className="relative mx-auto max-w-md lg:max-w-none">
+            <div className="relative mx-auto max-w-sm lg:max-w-none">
               {/* Background Accent Box */}
-              <div className="absolute -top-4 -left-4 w-full h-full bg-[#f7f2e7] border-2 border-[#dd5234] -z-10 transform -rotate-1 hidden sm:block" />
+              <div className="absolute -top-3 -left-3 w-full h-full bg-[#f7f2e7] border-2 border-[#dd5234] -z-10 transform -rotate-1 hidden sm:block" />
               
               {/* Main Image */}
-              <div className="relative overflow-hidden shadow-2xl">
+              <div className="relative overflow-hidden shadow-xl">
                 <img
                   src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?auto=format&fit=crop&w=1000&q=80"
                   alt={`${churchData.pastorName} - ${churchData.pastorTitle}`}
-                  className="w-full h-[460px] sm:h-[540px] object-cover filter contrast-105 hover:scale-105 transition-transform duration-700"
+                  className="w-full h-[380px] sm:h-[450px] object-cover filter contrast-105 hover:scale-105 transition-transform duration-700"
                 />
                 
                 {/* Image Overlay Badge */}
-                <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/90 via-black/50 to-transparent p-6 text-white">
-                  <p className="text-xs uppercase font-heading tracking-widest text-[#dd5234] font-bold">
+                <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/90 via-black/50 to-transparent p-5 text-white">
+                  <p className="text-[11px] uppercase font-heading tracking-widest text-[#dd5234] font-bold">
                     {churchData.pastorTitle}
                   </p>
-                  <h4 className="font-heading font-extrabold text-2xl uppercase tracking-wide">
+                  <h4 className="font-heading font-extrabold text-xl uppercase tracking-wide">
                     {churchData.pastorName}
                   </h4>
                   <p className="text-xs text-neutral-300">
@@ -40,10 +40,10 @@ export const PastoralWelcome: React.FC<PastoralWelcomeProps> = ({ onOpenPlanVisi
               </div>
 
               {/* Decorative Corner Badge */}
-              <div className="absolute -bottom-5 -right-5 bg-[#dd5234] text-white p-4 shadow-xl hidden sm:flex items-center gap-3">
-                <Heart className="w-6 h-6 fill-white" />
+              <div className="absolute -bottom-4 -right-4 bg-[#dd5234] text-white p-3.5 shadow-lg hidden sm:flex items-center gap-2.5">
+                <Heart className="w-5 h-5 fill-white" />
                 <div className="text-left">
-                  <p className="text-[10px] uppercase font-bold tracking-widest leading-tight opacity-90">Every Soul</p>
+                  <p className="text-[9px] uppercase font-bold tracking-widest leading-tight opacity-90">Every Soul</p>
                   <p className="text-xs font-heading font-extrabold uppercase tracking-wider">Matters To God</p>
                 </div>
               </div>
@@ -52,17 +52,17 @@ export const PastoralWelcome: React.FC<PastoralWelcomeProps> = ({ onOpenPlanVisi
 
           {/* Right Column: Pastor's Letter & Mission */}
           <div className="lg:col-span-7 flex flex-col justify-center">
-            <div className="inline-flex items-center gap-2 text-xs font-heading font-bold uppercase tracking-widest text-[#dd5234] mb-3">
-              <Quote className="w-4 h-4" />
+            <div className="inline-flex items-center gap-2 text-xs font-heading font-bold uppercase tracking-widest text-[#dd5234] mb-2.5">
+              <Quote className="w-3.5 h-3.5" />
               A Warm Greeting From Leadership
             </div>
 
-            <h2 className="font-heading font-extrabold text-3xl sm:text-5xl uppercase tracking-tight text-[#111111] leading-tight mb-6">
+            <h2 className="font-heading font-extrabold text-2xl sm:text-4xl uppercase tracking-tight text-[#111111] leading-tight mb-5">
               Hi, Welcome To <br />
               <span className="text-[#dd5234]">{churchData.name}!</span>
             </h2>
 
-            <div className="space-y-4 text-base sm:text-lg text-neutral-700 leading-relaxed font-normal">
+            <div className="space-y-3.5 text-sm sm:text-base text-neutral-700 leading-relaxed font-normal">
               <p>
                 {churchData.pastorBio}
               </p>
@@ -72,42 +72,42 @@ export const PastoralWelcome: React.FC<PastoralWelcomeProps> = ({ onOpenPlanVisi
             </div>
 
             {/* Core Pillars */}
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3.5 my-8 pt-4 border-t border-neutral-200">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 my-6 pt-3 border-t border-neutral-200">
               <div className="flex items-center gap-2.5">
-                <CheckCircle2 className="w-5 h-5 text-[#dd5234] shrink-0" />
-                <span className="text-sm font-semibold text-neutral-900">Passionate, Spirit-Filled Worship</span>
+                <CheckCircle2 className="w-4 h-4 text-[#dd5234] shrink-0" />
+                <span className="text-xs sm:text-sm font-semibold text-neutral-900">Passionate, Spirit-Filled Worship</span>
               </div>
               <div className="flex items-center gap-2.5">
-                <CheckCircle2 className="w-5 h-5 text-[#dd5234] shrink-0" />
-                <span className="text-sm font-semibold text-neutral-900">Uncompromised Biblical Truth</span>
+                <CheckCircle2 className="w-4 h-4 text-[#dd5234] shrink-0" />
+                <span className="text-xs sm:text-sm font-semibold text-neutral-900">Uncompromised Biblical Truth</span>
               </div>
               <div className="flex items-center gap-2.5">
-                <CheckCircle2 className="w-5 h-5 text-[#dd5234] shrink-0" />
-                <span className="text-sm font-semibold text-neutral-900">Deep, Caring Community Circles</span>
+                <CheckCircle2 className="w-4 h-4 text-[#dd5234] shrink-0" />
+                <span className="text-xs sm:text-sm font-semibold text-neutral-900">Deep, Caring Community Circles</span>
               </div>
               <div className="flex items-center gap-2.5">
-                <CheckCircle2 className="w-5 h-5 text-[#dd5234] shrink-0" />
-                <span className="text-sm font-semibold text-neutral-900">Dedicated Kids & Youth Programs</span>
+                <CheckCircle2 className="w-4 h-4 text-[#dd5234] shrink-0" />
+                <span className="text-xs sm:text-sm font-semibold text-neutral-900">Dedicated Kids & Youth Programs</span>
               </div>
             </div>
 
             {/* Signature & CTA */}
-            <div className="flex flex-col sm:flex-row sm:items-center gap-6 pt-4">
+            <div className="flex flex-col sm:flex-row sm:items-center gap-5 pt-3">
               <div>
-                <p className="font-serif italic text-2xl text-neutral-900 font-bold">
+                <p className="font-serif italic text-xl text-neutral-900 font-bold">
                   {churchData.pastorName}
                 </p>
-                <p className="text-xs uppercase tracking-widest text-neutral-500 font-heading font-semibold">
+                <p className="text-[11px] uppercase tracking-widest text-neutral-500 font-heading font-semibold">
                   Lead Pastor, {churchData.shortName}
                 </p>
               </div>
 
               <button
                 onClick={onOpenPlanVisit}
-                className="bg-[#111111] hover:bg-[#dd5234] text-white px-7 py-3.5 font-heading font-bold uppercase tracking-wider text-xs flex items-center justify-center gap-2.5 transition-all duration-200 self-start sm:self-auto cursor-pointer"
+                className="bg-[#111111] hover:bg-[#dd5234] text-white px-6 py-3 font-heading font-bold uppercase tracking-wider text-xs flex items-center justify-center gap-2 transition-all duration-200 self-start sm:self-auto cursor-pointer"
               >
                 <span>Join Us This Sunday</span>
-                <ArrowRight className="w-4 h-4" />
+                <ArrowRight className="w-3.5 h-3.5" />
               </button>
             </div>
           </div>

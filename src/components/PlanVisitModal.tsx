@@ -52,19 +52,19 @@ export const PlanVisitModal: React.FC<PlanVisitModalProps> = ({
               <CheckCircle2 className="w-9 h-9" />
             </div>
             <span className="text-xs uppercase font-heading font-bold tracking-widest text-[#dd5234]">
-              You're On The VIP Guest List!
+              You're On The Guest List!
             </span>
             <h3 className="font-heading font-extrabold text-2xl sm:text-3xl uppercase text-neutral-900 mt-1 mb-3">
               We Can't Wait To Meet You, {fullName}!
             </h3>
             <p className="text-sm text-neutral-600 max-w-md mx-auto mb-6 leading-relaxed">
-              We have reserved your VIP greeting for <strong>{serviceDate}</strong> at {churchData.name}. Our team will have a free welcome packet ready for you at the front entrance!
+              We have reserved your special welcome greeting for <strong>{serviceDate}</strong> at {churchData.name}. Our team will have a free welcome packet ready for you at the front entrance!
             </p>
 
             <div className="bg-[#f7f2e7] p-4 text-left text-xs space-y-2 mb-6 border-l-4 border-[#dd5234]">
               <div className="flex items-center gap-2 text-neutral-800 font-semibold">
                 <Car className="w-4 h-4 text-[#dd5234]" />
-                <span>Reserved VIP Parking Available</span>
+                <span>Reserved Visitor Parking Available</span>
               </div>
               {bringingKids && (
                 <div className="flex items-center gap-2 text-neutral-800 font-semibold">
@@ -89,7 +89,7 @@ export const PlanVisitModal: React.FC<PlanVisitModalProps> = ({
           <div>
             <div className="mb-6">
               <span className="text-xs font-heading font-bold uppercase tracking-widest text-[#dd5234]">
-                VIP Guest Experience
+                Guest Experience
               </span>
               <h3 className="font-heading font-extrabold text-2xl sm:text-3xl uppercase text-neutral-900 mt-1">
                 Plan Your Visit
@@ -99,7 +99,7 @@ export const PlanVisitModal: React.FC<PlanVisitModalProps> = ({
               </p>
             </div>
 
-            {/* VIP Perks Bar */}
+            {/* Guest Welcome Bar */}
             <div className="grid grid-cols-3 gap-2 bg-[#f7f2e7] p-3 text-center text-[11px] font-semibold text-neutral-700 mb-6">
               <div>🚗 Free Parking</div>
               <div>📖 Bible Ministry</div>
