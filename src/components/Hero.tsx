@@ -15,28 +15,24 @@ export const Hero: React.FC<HeroProps> = ({
 }) => {
 
   return (
-    <section className="relative min-h-[88vh] sm:min-h-[92vh] flex items-center justify-center text-white overflow-hidden pt-24 pb-12 sm:pt-28 sm:pb-16 bg-[#0a0a0a]">
-      {/* Background Video & Cinematic Fallback Layer */}
+    <section className="relative min-h-[88vh] sm:min-h-[92vh] flex items-center justify-center text-white overflow-hidden pt-24 pb-12 sm:pt-28 sm:pb-16">
+      {/* Background Video & Fallback Poster Layer */}
       <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none">
-        {/* Actual Church Video from YouTube Channel */}
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[350%] h-[350%] sm:w-[160%] sm:h-[160%] pointer-events-none opacity-50 filter contrast-125 brightness-90">
-          <iframe
-            src={`https://www.youtube-nocookie.com/embed/${churchData.latestSermon.videoId}?autoplay=1&mute=1&loop=1&playlist=${churchData.latestSermon.videoId}&controls=0&showinfo=0&rel=0&iv_load_policy=3&disablekb=1&modestbranding=1&enablejsapi=1`}
-            title="UPC Church Bodi Live Worship Background"
-            className="w-full h-full object-cover pointer-events-none border-0"
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+        <video
+          autoPlay
+          loop
+          muted
+          playsInline
+          poster="https://images.unsplash.com/photo-1510936111840-65e151ad71bb?auto=format&fit=crop&w=1920&q=80"
+          className="w-full h-full object-cover scale-105 filter brightness-75 contrast-110"
+        >
+          <source
+            src="https://media.thechurchcoassets.com/accounts/49/d55b27ee-bb9f-4a81-b08e-bd10bb27e1e2-./Website%20-%20Home%20Header%20Video%20NEW%20LOCATION%20UPDATE%20v3.mp4"
+            type="video/mp4"
           />
-        </div>
-
-        {/* Ambient Poster Layer Underneath */}
-        <img
-          src={churchData.latestSermon.thumbnail}
-          alt="UPC Church Bodi Worship"
-          className="absolute inset-0 w-full h-full object-cover -z-10 filter brightness-50"
-        />
-
-        {/* Cinematic Multi-layer Gradient Tint Overlay */}
-        <div className="absolute inset-0 bg-gradient-to-b from-black/80 via-black/55 to-black/90 z-0" />
+        </video>
+        {/* Cinematic Gradient Tint Overlay */}
+        <div className="absolute inset-0 bg-black/60 via-black/45 to-black/75" />
       </div>
 
       {/* Hero Content Box */}
