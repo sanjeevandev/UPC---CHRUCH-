@@ -1,5 +1,5 @@
 import { churchData } from '../data/churchData';
-import { MapPin, Church, Heart } from 'lucide-react';
+import { MapPin, Heart } from 'lucide-react';
 
 interface FooterProps {
   onOpenPlanVisit: () => void;
@@ -14,8 +14,12 @@ export const Footer = ({ onOpenPlanVisit, onOpenLocation }: FooterProps) => {
           {/* Brand Col */}
           <div className="space-y-4">
             <div className="flex items-center gap-3">
-              <div className="w-10 h-10 rounded-sm bg-[#dd5234] flex items-center justify-center text-white font-bold">
-                <Church className="w-6 h-6" />
+              <div className="w-12 h-12 rounded-full overflow-hidden bg-white p-0.5 border-2 border-[#dd5234] flex items-center justify-center shrink-0 shadow-lg">
+                <img
+                  src={churchData.logo}
+                  alt={`${churchData.name} Logo`}
+                  className="w-full h-full object-cover rounded-full"
+                />
               </div>
               <div className="flex flex-col">
                 <span className="text-white font-heading font-extrabold text-lg tracking-wider leading-none">

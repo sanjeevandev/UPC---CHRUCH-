@@ -1,6 +1,7 @@
 export interface ChurchInfo {
   name: string;
   shortName: string;
+  logo: string;
   tagline: string;
   subTagline: string;
   pastorName: string;
@@ -61,6 +62,7 @@ export interface ChurchInfo {
 export const churchData: ChurchInfo = {
   name: "UNITED PENTECOSTAL CHURCH",
   shortName: "UPC",
+  logo: "/upc-logo.jpg",
   tagline: "NO ONE SHOULD WALK THROUGH LIFE ALONE",
   subTagline: "Discover your people, place, and purpose in God's presence.",
   pastorName: "Pastor Rajan Joel",
