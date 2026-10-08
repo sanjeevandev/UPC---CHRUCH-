@@ -1,4 +1,4 @@
-import React, { useRef, useEffect, useState } from 'react';
+import React from 'react';
 import { churchData } from '../data/churchData';
 import { Calendar, Users, Play, MapPin, Clock } from 'lucide-react';
 
@@ -13,52 +13,30 @@ export const Hero: React.FC<HeroProps> = ({
   onOpenLocation,
   onScrollToSermons,
 }) => {
-  const videoRef = useRef<HTMLVideoElement>(null);
-  const [videoError, setVideoError] = useState(false);
-
-  useEffect(() => {
-    if (videoRef.current) {
-      videoRef.current.play().catch(() => {
-        // Autoplay may be restricted until interaction
-      });
-    }
-  }, []);
 
   return (
     <section className="relative min-h-[88vh] sm:min-h-[92vh] flex items-center justify-center text-white overflow-hidden pt-24 pb-12 sm:pt-28 sm:pb-16 bg-[#0a0a0a]">
-      {/* Background Video & Fallback Poster Layer */}
+      {/* Background Video & Cinematic Fallback Layer */}
       <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none">
-        {!videoError ? (
-          <video
-            ref={videoRef}
-            autoPlay
-            loop
-            muted
-            playsInline
-            preload="auto"
-            onError={() => setVideoError(true)}
-            poster="https://images.unsplash.com/photo-1510936111840-65e151ad71bb?auto=format&fit=crop&w=1920&q=80"
-            className="w-full h-full object-cover scale-105 filter brightness-75 contrast-110 transition-opacity duration-700"
-          >
-            <source
-              src="https://assets.mixkit.co/videos/preview/mixkit-hands-raised-in-worship-at-a-church-service-42940-large.mp4"
-              type="video/mp4"
-            />
-            <source
-              src="https://player.vimeo.com/external/371433846.sd.mp4?s=236da2f3c0fd27f1c8535a0a550d4177d07a93be&profile_id=164&oauth2_token_id=57447761"
-              type="video/mp4"
-            />
-          </video>
-        ) : (
-          <div
-            className="w-full h-full bg-cover bg-center"
-            style={{
-              backgroundImage: `url('https://images.unsplash.com/photo-1510936111840-65e151ad71bb?auto=format&fit=crop&w=1920&q=80')`
-            }}
+        {/* Actual Church Video from YouTube Channel */}
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[350%] h-[350%] sm:w-[160%] sm:h-[160%] pointer-events-none opacity-50 filter contrast-125 brightness-90">
+          <iframe
+            src={`https://www.youtube-nocookie.com/embed/${churchData.latestSermon.videoId}?autoplay=1&mute=1&loop=1&playlist=${churchData.latestSermon.videoId}&controls=0&showinfo=0&rel=0&iv_load_policy=3&disablekb=1&modestbranding=1&enablejsapi=1`}
+            title="UPC Church Bodi Live Worship Background"
+            className="w-full h-full object-cover pointer-events-none border-0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
           />
-        )}
-        {/* Cinematic Gradient Tint Overlay */}
-        <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/50 to-black/85" />
+        </div>
+
+        {/* Ambient Poster Layer Underneath */}
+        <img
+          src={churchData.latestSermon.thumbnail}
+          alt="UPC Church Bodi Worship"
+          className="absolute inset-0 w-full h-full object-cover -z-10 filter brightness-50"
+        />
+
+        {/* Cinematic Multi-layer Gradient Tint Overlay */}
+        <div className="absolute inset-0 bg-gradient-to-b from-black/80 via-black/55 to-black/90 z-0" />
       </div>
 
       {/* Hero Content Box */}

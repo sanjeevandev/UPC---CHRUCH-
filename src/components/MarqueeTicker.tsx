@@ -9,7 +9,7 @@ export const MarqueeTicker: React.FC = () => {
     <div className="relative bg-[#dd5234] text-white py-3 sm:py-3.5 overflow-hidden border-y border-[#b1422a] select-none">
       <div className="flex whitespace-nowrap animate-marquee">
         {items.map((text, idx) => (
-          <div key={idx} className="flex items-center mx-4 sm:mx-6">
+          <div key={idx} className="flex items-center mx-4 sm:mx-6 shrink-0">
             <span className="font-heading font-extrabold text-sm sm:text-lg md:text-xl uppercase tracking-wider text-white flex items-center gap-2.5">
               {text}
             </span>
