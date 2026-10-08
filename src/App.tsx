@@ -7,6 +7,7 @@ import { PastoralWelcome } from './components/PastoralWelcome';
 import { ParallaxGroups } from './components/ParallaxGroups';
 import { LatestSermon } from './components/LatestSermon';
 import { MinistriesSection } from './components/MinistriesSection';
+import { YouthLeaderSection } from './components/YouthLeaderSection';
 import { PrayerRequestSection } from './components/PrayerRequestSection';
 import { Footer } from './components/Footer';
 import { PlanVisitModal } from './components/PlanVisitModal';
@@ -83,10 +84,15 @@ export function App() {
         onOpenPlanVisit={handleOpenPlanVisit}
       />
 
-      {/* 9. Prayer Request & Intercession (Replaced Giving Section) */}
+      {/* 9. Youth Leadership (Bro. Goodwin & UPC Bodi Youth) */}
+      <YouthLeaderSection
+        onOpenPlanVisit={() => handleOpenPlanVisit(false)}
+      />
+
+      {/* 10. Prayer Request & Intercession (Replaced Giving Section) */}
       <PrayerRequestSection />
 
-      {/* 10. Mega Footer */}
+      {/* 11. Mega Footer */}
       <Footer
         onOpenPlanVisit={() => handleOpenPlanVisit(false)}
         onOpenLocation={() => setLocationOpen(true)}

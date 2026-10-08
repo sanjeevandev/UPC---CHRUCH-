@@ -79,6 +79,11 @@ export const Footer = ({ onOpenPlanVisit, onOpenLocation }: FooterProps) => {
                 </a>
               </li>
               <li>
+                <a href="#youth" className="hover:text-white transition-colors">
+                  Youth Leader Bro. Goodwin
+                </a>
+              </li>
+              <li>
                 <a href="#ministries" className="hover:text-white transition-colors">
                   Children, Youth & Women
                 </a>

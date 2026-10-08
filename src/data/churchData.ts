@@ -8,6 +8,14 @@ export interface ChurchInfo {
   pastorTitle: string;
   pastorImage: string;
   pastorBio: string;
+  youthLeader: {
+    name: string;
+    title: string;
+    image: string;
+    tagline: string;
+    bio: string;
+    gatheringTime: string;
+  };
   location: {
     address: string;
     cityState: string;
@@ -70,6 +78,14 @@ export const churchData: ChurchInfo = {
   pastorTitle: "Lead Pastor",
   pastorImage: "/pastor-rajan-joel.jpg",
   pastorBio: `We believe that God has an extraordinary purpose for every single person. In early days, we sensed God's clear calling to build a life-giving, spirit-empowered, Bible-believing family. Our dream is to see broken hearts healed, families restored, and our community transformed by the unconditional love and power of Jesus Christ. Whether you have questions about faith or are looking for a spiritual home, you are always welcome here!`,
+  youthLeader: {
+    name: "Bro. Goodwin",
+    title: "Youth Ministry Leader",
+    image: "/youth-leader-goodwin.jpg",
+    tagline: "UPC BODI YOUTH • IGNITING PASSION & PURPOSE",
+    bio: `At UPC Bodi Youth, we are passionate about raising a bold, spirit-filled, and purpose-driven generation of young people. Our mission is to provide an empowering, safe space where students and young adults discover their identity in Christ, cultivate authentic friendships, and step courageously into their God-given destiny. Come worship with us, grow together, and be a light to the world!`,
+    gatheringTime: "Every Sunday at 1:00 PM – 2:00 PM",
+  },
   location: {
     address: "United Pentecostal Church Sanctuary",
     cityState: "Bodi Campus (Click for Directions)",

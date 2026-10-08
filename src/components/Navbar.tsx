@@ -24,6 +24,7 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenPlanVisit, onOpenLocation 
     { label: 'About & Pastor', href: '#about' },
     { label: 'Location', action: onOpenLocation },
     { label: 'Ministries', href: '#ministries' },
+    { label: 'Youth', href: '#youth' },
     { label: 'Sermons', href: '#sermons' },
     { label: 'Groups', href: '#groups' },
     { label: 'Prayer Request', href: '#prayer' },
