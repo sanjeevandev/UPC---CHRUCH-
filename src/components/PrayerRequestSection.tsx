@@ -23,20 +23,32 @@ export const PrayerRequestSection: React.FC = () => {
   const [offsetY, setOffsetY] = useState(0);
 
   useEffect(() => {
+    let animationFrameId: number;
+
     const handleScroll = () => {
       if (!sectionRef.current) return;
       const rect = sectionRef.current.getBoundingClientRect();
       const windowHeight = window.innerHeight;
+      
       if (rect.top <= windowHeight && rect.bottom >= 0) {
-        const speed = 0.25;
-        const offset = (rect.top - windowHeight / 2) * speed;
-        setOffsetY(offset);
+        const speed = 0.28;
+        const relativeScroll = (rect.top - windowHeight / 2) * speed;
+        setOffsetY(relativeScroll);
       }
     };
 
-    window.addEventListener('scroll', handleScroll, { passive: true });
+    const onScroll = () => {
+      cancelAnimationFrame(animationFrameId);
+      animationFrameId = requestAnimationFrame(handleScroll);
+    };
+
+    window.addEventListener('scroll', onScroll, { passive: true });
     handleScroll();
-    return () => window.removeEventListener('scroll', handleScroll);
+
+    return () => {
+      window.removeEventListener('scroll', onScroll);
+      cancelAnimationFrame(animationFrameId);
+    };
   }, []);
 
   const handleSubmit = async (e: React.FormEvent) => {
@@ -97,16 +109,16 @@ export const PrayerRequestSection: React.FC = () => {
       ref={sectionRef}
       className="relative py-20 sm:py-28 text-white overflow-hidden"
     >
-      {/* Scraped Website Original Parallax Image Layer with Smooth Scrolling Effect */}
+      {/* Authentic UPC Bodi Worship Night Photo with Parallax Scroll */}
       <div
-        className="absolute -top-32 -bottom-32 left-0 right-0 w-full h-[calc(100%+256px)] bg-cover bg-center pointer-events-none transition-transform duration-75 ease-out will-change-transform filter brightness-70 contrast-110"
+        className="absolute -top-36 -bottom-36 left-0 right-0 w-full h-[calc(100%+288px)] bg-cover bg-center pointer-events-none transition-transform duration-100 ease-out will-change-transform filter brightness-70 contrast-110"
         style={{
-          backgroundImage: `url('/scraped-community-2.jpg')`,
-          transform: `translateY(${offsetY}px) scale(1.1)`
+          backgroundImage: `url('/upc-bodi-worship-night.jpg')`,
+          transform: `translate3d(0, ${offsetY}px, 0) scale(1.12)`
         }}
       />
 
-      {/* Atmospheric Dark Overlay Tint */}
+      {/* Atmospheric Dark & Warm Gradient Overlay */}
       <div className="absolute inset-0 bg-gradient-to-b from-black/85 via-black/70 to-black/90 pointer-events-none" />
 
       <div className="relative z-10 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -114,10 +126,10 @@ export const PrayerRequestSection: React.FC = () => {
           <span className="text-xs font-heading font-bold uppercase tracking-widest text-[#dd5234] bg-black/75 px-4 py-1.5 border border-[#dd5234]/40 inline-block mb-3.5 shadow-xl">
             Intercession & Spiritual Support
           </span>
-          <h2 className="font-heading font-extrabold text-2xl sm:text-4xl uppercase tracking-tight text-white mb-2.5 drop-shadow-lg">
+          <h2 className="font-heading font-extrabold text-2xl sm:text-4xl uppercase tracking-tight text-white mb-2.5 drop-shadow-2xl">
             We Believe In The Power Of Prayer
           </h2>
-          <p className="text-xs sm:text-sm text-neutral-300 font-light leading-relaxed drop-shadow">
+          <p className="text-xs sm:text-sm text-neutral-300 font-light leading-relaxed drop-shadow-lg">
             "For where two or three gather in my name, there am I with them." Whatever mountain you are facing, <strong className="text-white font-medium">{churchData.pastorName}</strong> and our prayer intercessors are ready to stand in faith with you.
           </p>
         </div>

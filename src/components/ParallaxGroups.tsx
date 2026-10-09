@@ -8,20 +8,33 @@ export const ParallaxGroups: React.FC = () => {
   const [offsetY, setOffsetY] = useState(0);
 
   useEffect(() => {
+    let animationFrameId: number;
+
     const handleScroll = () => {
       if (!sectionRef.current) return;
       const rect = sectionRef.current.getBoundingClientRect();
       const windowHeight = window.innerHeight;
+      
+      // Calculate smooth parallax offset when section is in or near viewport
       if (rect.top <= windowHeight && rect.bottom >= 0) {
-        const speed = 0.28;
-        const offset = (rect.top - windowHeight / 2) * speed;
-        setOffsetY(offset);
+        const speed = 0.32;
+        const relativeScroll = (rect.top - windowHeight / 2) * speed;
+        setOffsetY(relativeScroll);
       }
     };
 
-    window.addEventListener('scroll', handleScroll, { passive: true });
+    const onScroll = () => {
+      cancelAnimationFrame(animationFrameId);
+      animationFrameId = requestAnimationFrame(handleScroll);
+    };
+
+    window.addEventListener('scroll', onScroll, { passive: true });
     handleScroll();
-    return () => window.removeEventListener('scroll', handleScroll);
+
+    return () => {
+      window.removeEventListener('scroll', onScroll);
+      cancelAnimationFrame(animationFrameId);
+    };
   }, []);
 
   const groups = [
@@ -56,39 +69,39 @@ export const ParallaxGroups: React.FC = () => {
       <section
         id="groups"
         ref={sectionRef}
-        className="relative py-24 sm:py-32 text-white overflow-hidden"
+        className="relative py-28 sm:py-36 text-white overflow-hidden"
       >
-        {/* Scraped Website Original Parallax Image Layer with Smooth Scrolling Effect */}
+        {/* Authentic UPC Bodi Congregation Photo with Smooth Parallax Scroll */}
         <div
-          className="absolute -top-32 -bottom-32 left-0 right-0 w-full h-[calc(100%+256px)] bg-cover bg-center pointer-events-none transition-transform duration-75 ease-out will-change-transform filter brightness-75 contrast-110"
+          className="absolute -top-36 -bottom-36 left-0 right-0 w-full h-[calc(100%+288px)] bg-cover bg-center pointer-events-none transition-transform duration-100 ease-out will-change-transform filter brightness-75 contrast-105"
           style={{
-            backgroundImage: `url('/scraped-pastor-img.jpg')`,
-            transform: `translateY(${offsetY}px) scale(1.1)`
+            backgroundImage: `url('/upc-bodi-congregation.jpg')`,
+            transform: `translate3d(0, ${offsetY}px, 0) scale(1.12)`
           }}
         />
 
-        {/* Cinematic Dark/Warm Overlay Tint */}
-        <div className="absolute inset-0 bg-black/65 via-black/50 to-black/75 pointer-events-none" />
+        {/* Cinematic Gradient Tint Overlay */}
+        <div className="absolute inset-0 bg-gradient-to-b from-black/75 via-black/55 to-black/80 pointer-events-none" />
 
         {/* Content */}
         <div className="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 text-center">
-          <span className="text-xs font-heading font-bold uppercase tracking-widest text-[#dd5234] bg-black/70 px-4 py-1.5 border border-[#dd5234]/40 inline-block mb-4 shadow-xl">
+          <span className="text-xs font-heading font-bold uppercase tracking-widest text-[#dd5234] bg-black/75 px-4 py-1.5 border border-[#dd5234]/40 inline-block mb-4 shadow-xl">
             Connect Groups & Community
           </span>
 
-          <h2 className="font-heading font-extrabold text-3xl sm:text-5xl md:text-6xl uppercase tracking-tight leading-tight mb-6 drop-shadow-lg">
+          <h2 className="font-heading font-extrabold text-3xl sm:text-5xl md:text-6xl uppercase tracking-tight leading-tight mb-6 drop-shadow-2xl">
             Find Your People. <br />
             <span className="text-[#dd5234]">Grow in Faith.</span> <br />
             Do Life Together.
           </h2>
 
-          <p className="text-base sm:text-lg md:text-xl text-neutral-200 font-light max-w-2xl mx-auto mb-10 leading-relaxed drop-shadow">
+          <p className="text-base sm:text-lg md:text-xl text-neutral-200 font-light max-w-2xl mx-auto mb-10 leading-relaxed drop-shadow-lg">
             Real life happens in circles, not just in rows. Connect with people who will encourage you, pray with you, and stand with you.
           </p>
 
           <button
             onClick={() => setModalOpen(true)}
-            className="bg-[#dd5234] hover:bg-[#b1422a] text-white px-9 py-4 font-heading font-bold uppercase tracking-widest text-xs sm:text-sm transition-all duration-200 shadow-2xl transform hover:-translate-y-1 inline-flex items-center gap-2 cursor-pointer"
+            className="bg-[#dd5234] hover:bg-[#b1422a] text-white px-9 py-4 font-heading font-bold uppercase tracking-widest text-xs sm:text-sm transition-all duration-200 shadow-2xl transform hover:-translate-y-1 inline-flex items-center gap-2 cursor-pointer rounded-none"
           >
             <Users className="w-5 h-5" />
             <span>Explore Connect Groups</span>
