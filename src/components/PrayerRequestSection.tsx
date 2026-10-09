@@ -28,7 +28,7 @@ export const PrayerRequestSection: React.FC = () => {
       const rect = sectionRef.current.getBoundingClientRect();
       const windowHeight = window.innerHeight;
       if (rect.top <= windowHeight && rect.bottom >= 0) {
-        const speed = 0.22;
+        const speed = 0.25;
         const offset = (rect.top - windowHeight / 2) * speed;
         setOffsetY(offset);
       }
@@ -45,7 +45,6 @@ export const PrayerRequestSection: React.FC = () => {
 
     const categoryName = churchData.prayerCategories.find(c => c.id === selectedCategory)?.name || 'General';
 
-    // Store for WhatsApp quick link
     setLastSubmittedData({
       name: fullName,
       category: categoryName,
@@ -98,21 +97,21 @@ export const PrayerRequestSection: React.FC = () => {
       ref={sectionRef}
       className="relative py-20 sm:py-28 text-white overflow-hidden"
     >
-      {/* Parallax Background Layer */}
+      {/* Scraped Website Original Parallax Image Layer with Smooth Scrolling Effect */}
       <div
-        className="absolute -top-24 -bottom-24 left-0 right-0 w-full h-[calc(100%+192px)] bg-cover bg-center pointer-events-none transition-transform duration-75 ease-out will-change-transform"
+        className="absolute -top-32 -bottom-32 left-0 right-0 w-full h-[calc(100%+256px)] bg-cover bg-center pointer-events-none transition-transform duration-75 ease-out will-change-transform filter brightness-70 contrast-110"
         style={{
-          backgroundImage: `url('/prayer-bg.svg')`,
-          transform: `translateY(${offsetY}px) scale(1.08)`
+          backgroundImage: `url('/scraped-community-2.jpg')`,
+          transform: `translateY(${offsetY}px) scale(1.1)`
         }}
       />
 
-      {/* Atmospheric Dark & Radiant Tint Overlay */}
-      <div className="absolute inset-0 bg-gradient-to-b from-black/80 via-black/65 to-black/85 pointer-events-none" />
+      {/* Atmospheric Dark Overlay Tint */}
+      <div className="absolute inset-0 bg-gradient-to-b from-black/85 via-black/70 to-black/90 pointer-events-none" />
 
       <div className="relative z-10 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center max-w-2xl mx-auto mb-10">
-          <span className="text-xs font-heading font-bold uppercase tracking-widest text-[#dd5234] bg-black/70 px-4 py-1.5 border border-[#dd5234]/40 inline-block mb-3.5 shadow-lg">
+          <span className="text-xs font-heading font-bold uppercase tracking-widest text-[#dd5234] bg-black/75 px-4 py-1.5 border border-[#dd5234]/40 inline-block mb-3.5 shadow-xl">
             Intercession & Spiritual Support
           </span>
           <h2 className="font-heading font-extrabold text-2xl sm:text-4xl uppercase tracking-tight text-white mb-2.5 drop-shadow-lg">

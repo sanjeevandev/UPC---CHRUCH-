@@ -12,9 +12,8 @@ export const ParallaxGroups: React.FC = () => {
       if (!sectionRef.current) return;
       const rect = sectionRef.current.getBoundingClientRect();
       const windowHeight = window.innerHeight;
-      // Calculate how far through the viewport the section is
       if (rect.top <= windowHeight && rect.bottom >= 0) {
-        const speed = 0.25;
+        const speed = 0.28;
         const offset = (rect.top - windowHeight / 2) * speed;
         setOffsetY(offset);
       }
@@ -57,41 +56,41 @@ export const ParallaxGroups: React.FC = () => {
       <section
         id="groups"
         ref={sectionRef}
-        className="relative py-20 sm:py-28 text-white overflow-hidden"
+        className="relative py-24 sm:py-32 text-white overflow-hidden"
       >
-        {/* Parallax Background Layer */}
+        {/* Scraped Website Original Parallax Image Layer with Smooth Scrolling Effect */}
         <div
-          className="absolute -top-24 -bottom-24 left-0 right-0 w-full h-[calc(100%+192px)] bg-cover bg-center pointer-events-none transition-transform duration-75 ease-out will-change-transform"
+          className="absolute -top-32 -bottom-32 left-0 right-0 w-full h-[calc(100%+256px)] bg-cover bg-center pointer-events-none transition-transform duration-75 ease-out will-change-transform filter brightness-75 contrast-110"
           style={{
-            backgroundImage: `url('/connect-groups-bg.svg')`,
-            transform: `translateY(${offsetY}px) scale(1.08)`
+            backgroundImage: `url('/scraped-pastor-img.jpg')`,
+            transform: `translateY(${offsetY}px) scale(1.1)`
           }}
         />
 
-        {/* Ambient Dark/Warm Gradient Tint */}
-        <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/50 to-black/75 pointer-events-none" />
+        {/* Cinematic Dark/Warm Overlay Tint */}
+        <div className="absolute inset-0 bg-black/65 via-black/50 to-black/75 pointer-events-none" />
 
         {/* Content */}
-        <div className="relative z-10 max-w-3xl mx-auto px-4 sm:px-6 text-center">
-          <span className="text-xs font-heading font-bold uppercase tracking-widest text-[#dd5234] bg-black/70 px-4 py-1.5 border border-[#dd5234]/40 inline-block mb-4 shadow-lg">
+        <div className="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 text-center">
+          <span className="text-xs font-heading font-bold uppercase tracking-widest text-[#dd5234] bg-black/70 px-4 py-1.5 border border-[#dd5234]/40 inline-block mb-4 shadow-xl">
             Connect Groups & Community
           </span>
 
-          <h2 className="font-heading font-extrabold text-2xl sm:text-4xl md:text-5xl uppercase tracking-tight leading-tight mb-4 drop-shadow-lg">
+          <h2 className="font-heading font-extrabold text-3xl sm:text-5xl md:text-6xl uppercase tracking-tight leading-tight mb-6 drop-shadow-lg">
             Find Your People. <br />
             <span className="text-[#dd5234]">Grow in Faith.</span> <br />
             Do Life Together.
           </h2>
 
-          <p className="text-sm sm:text-base md:text-lg text-neutral-200 font-light max-w-xl mx-auto mb-8 leading-relaxed drop-shadow">
+          <p className="text-base sm:text-lg md:text-xl text-neutral-200 font-light max-w-2xl mx-auto mb-10 leading-relaxed drop-shadow">
             Real life happens in circles, not just in rows. Connect with people who will encourage you, pray with you, and stand with you.
           </p>
 
           <button
             onClick={() => setModalOpen(true)}
-            className="bg-[#dd5234] hover:bg-[#b1422a] text-white px-7 py-3.5 font-heading font-bold uppercase tracking-wider text-xs sm:text-sm transition-all duration-200 shadow-2xl transform hover:-translate-y-0.5 inline-flex items-center gap-2 cursor-pointer"
+            className="bg-[#dd5234] hover:bg-[#b1422a] text-white px-9 py-4 font-heading font-bold uppercase tracking-widest text-xs sm:text-sm transition-all duration-200 shadow-2xl transform hover:-translate-y-1 inline-flex items-center gap-2 cursor-pointer"
           >
-            <Users className="w-4 h-4" />
+            <Users className="w-5 h-5" />
             <span>Explore Connect Groups</span>
             <ArrowRight className="w-4 h-4" />
           </button>
@@ -101,10 +100,10 @@ export const ParallaxGroups: React.FC = () => {
       {/* Connect Groups Modal */}
       {modalOpen && (
         <div className="fixed inset-0 z-50 bg-black/80 backdrop-blur-md flex items-center justify-center p-4">
-          <div className="bg-white text-[#303030] max-w-2xl w-full max-h-[90vh] overflow-y-auto p-6 sm:p-8 shadow-2xl relative animate-scale-up">
+          <div className="bg-white text-[#303030] max-w-2xl w-full max-h-[90vh] overflow-y-auto p-6 sm:p-8 shadow-2xl relative animate-scale-up border-t-8 border-[#dd5234]">
             <button
               onClick={() => setModalOpen(false)}
-              className="absolute top-5 right-5 text-neutral-400 hover:text-black transition-colors"
+              className="absolute top-5 right-5 text-neutral-400 hover:text-black transition-colors cursor-pointer"
             >
               <X className="w-6 h-6" />
             </button>
@@ -113,7 +112,7 @@ export const ParallaxGroups: React.FC = () => {
               <span className="text-xs font-heading font-bold uppercase tracking-wider text-[#dd5234]">
                 Get Connected
               </span>
-              <h3 className="font-heading font-bold text-2xl sm:text-3xl uppercase text-neutral-900">
+              <h3 className="font-heading font-bold text-2xl sm:text-3xl uppercase text-neutral-900 mt-1">
                 Join A Connect Group
               </h3>
               <p className="text-xs sm:text-sm text-neutral-600 mt-1">
