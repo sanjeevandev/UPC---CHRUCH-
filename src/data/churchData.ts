@@ -160,7 +160,7 @@ export const churchData: ChurchInfo = {
     {
       title: "Children's Sunday Class",
       description: "Dedicated Sunday School from 10:30 AM to 11:50 AM with interactive Bible stories, moral lessons, and joy-filled worship.",
-      image: "/upc-logo.jpg",
+      image: "/children-sunday-class.jpg",
       category: "Every Sunday 10:30 AM"
     },
     {
