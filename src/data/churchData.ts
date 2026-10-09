@@ -172,7 +172,7 @@ export const churchData: ChurchInfo = {
     {
       title: "Women's Prayer Fellowship",
       description: "United in powerful intercession every Sunday at 1:00 PM, praying for homes, breakthrough, and revival.",
-      image: "https://images.unsplash.com/photo-1511632765486-a01980e01a18?auto=format&fit=crop&w=800&q=80",
+      image: "/womens-fellowship.jpg",
       category: "Every Sunday 1:00 PM"
     },
     {
