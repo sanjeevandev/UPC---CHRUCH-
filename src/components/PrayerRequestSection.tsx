@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { churchData } from '../data/churchData';
 import { Heart, Send, CheckCircle2, ShieldCheck, Mail, MessageCircle, Clock } from 'lucide-react';
 import confetti from 'canvas-confetti';
@@ -18,6 +18,26 @@ export const PrayerRequestSection: React.FC = () => {
     text: string;
     phone: string;
   } | null>(null);
+
+  const sectionRef = useRef<HTMLElement>(null);
+  const [offsetY, setOffsetY] = useState(0);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      if (!sectionRef.current) return;
+      const rect = sectionRef.current.getBoundingClientRect();
+      const windowHeight = window.innerHeight;
+      if (rect.top <= windowHeight && rect.bottom >= 0) {
+        const speed = 0.22;
+        const offset = (rect.top - windowHeight / 2) * speed;
+        setOffsetY(offset);
+      }
+    };
+
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    handleScroll();
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -75,23 +95,30 @@ export const PrayerRequestSection: React.FC = () => {
   return (
     <section
       id="prayer"
-      className="relative py-16 sm:py-24 text-white bg-fixed-parallax"
-      style={{
-        backgroundImage: `url('https://images.unsplash.com/photo-1544427920-c49ccfb85579?auto=format&fit=crop&w=1920&q=80')`
-      }}
+      ref={sectionRef}
+      className="relative py-20 sm:py-28 text-white overflow-hidden"
     >
-      {/* Dark Gradient Overlay */}
-      <div className="absolute inset-0 bg-black/80 via-black/70 to-black/85" />
+      {/* Parallax Background Layer */}
+      <div
+        className="absolute -top-24 -bottom-24 left-0 right-0 w-full h-[calc(100%+192px)] bg-cover bg-center pointer-events-none transition-transform duration-75 ease-out will-change-transform"
+        style={{
+          backgroundImage: `url('/prayer-bg.svg')`,
+          transform: `translateY(${offsetY}px) scale(1.08)`
+        }}
+      />
+
+      {/* Atmospheric Dark & Radiant Tint Overlay */}
+      <div className="absolute inset-0 bg-gradient-to-b from-black/80 via-black/65 to-black/85 pointer-events-none" />
 
       <div className="relative z-10 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center max-w-2xl mx-auto mb-10">
-          <span className="text-xs font-heading font-bold uppercase tracking-widest text-[#dd5234] bg-white/10 px-3.5 py-1 border border-white/20 inline-block mb-2.5">
+          <span className="text-xs font-heading font-bold uppercase tracking-widest text-[#dd5234] bg-black/70 px-4 py-1.5 border border-[#dd5234]/40 inline-block mb-3.5 shadow-lg">
             Intercession & Spiritual Support
           </span>
-          <h2 className="font-heading font-extrabold text-2xl sm:text-4xl uppercase tracking-tight text-white mb-2.5">
+          <h2 className="font-heading font-extrabold text-2xl sm:text-4xl uppercase tracking-tight text-white mb-2.5 drop-shadow-lg">
             We Believe In The Power Of Prayer
           </h2>
-          <p className="text-xs sm:text-sm text-neutral-300 font-light leading-relaxed">
+          <p className="text-xs sm:text-sm text-neutral-300 font-light leading-relaxed drop-shadow">
             "For where two or three gather in my name, there am I with them." Whatever mountain you are facing, <strong className="text-white font-medium">{churchData.pastorName}</strong> and our prayer intercessors are ready to stand in faith with you.
           </p>
         </div>

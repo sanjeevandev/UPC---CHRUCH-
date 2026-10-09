@@ -1,0 +1,90 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1920 1080" width="100%" height="100%">
+  <defs>
+    <!-- Deep Holy Midnight & Royal Burgundy Gradient -->
+    <linearGradient id="prayerBgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#07070b" />
+      <stop offset="35%" stop-color="#120d18" />
+      <stop offset="70%" stop-color="#1a0c0a" />
+      <stop offset="100%" stop-color="#08080c" />
+    </linearGradient>
+
+    <!-- Divine Golden Light Radiance -->
+    <radialGradient id="divineLight" cx="50%" cy="15%" r="70%">
+      <stop offset="0%" stop-color="#fbbf24" stop-opacity="0.45" />
+      <stop offset="40%" stop-color="#dd5234" stop-opacity="0.22" />
+      <stop offset="80%" stop-color="#000000" stop-opacity="0" />
+    </radialGradient>
+
+    <!-- Warm Candlelight Glows -->
+    <radialGradient id="candleGlow1" cx="25%" cy="60%" r="45%">
+      <stop offset="0%" stop-color="#f59e0b" stop-opacity="0.3" />
+      <stop offset="70%" stop-color="#000000" stop-opacity="0" />
+    </radialGradient>
+
+    <radialGradient id="candleGlow2" cx="75%" cy="60%" r="45%">
+      <stop offset="0%" stop-color="#f59e0b" stop-opacity="0.3" />
+      <stop offset="70%" stop-color="#000000" stop-opacity="0" />
+    </radialGradient>
+
+    <!-- Heavenly Sunrays / Beams of Prayer -->
+    <linearGradient id="prayerRay1" x1="50%" y1="0%" x2="20%" y2="100%">
+      <stop offset="0%" stop-color="#ffffff" stop-opacity="0.25" />
+      <stop offset="50%" stop-color="#fbbf24" stop-opacity="0.08" />
+      <stop offset="100%" stop-color="#000000" stop-opacity="0" />
+    </linearGradient>
+
+    <linearGradient id="prayerRay2" x1="50%" y1="0%" x2="80%" y2="100%">
+      <stop offset="0%" stop-color="#ffffff" stop-opacity="0.25" />
+      <stop offset="50%" stop-color="#dd5234" stop-opacity="0.08" />
+      <stop offset="100%" stop-color="#000000" stop-opacity="0" />
+    </linearGradient>
+
+    <linearGradient id="prayerRayCenter" x1="50%" y1="0%" x2="50%" y2="100%">
+      <stop offset="0%" stop-color="#ffffff" stop-opacity="0.35" />
+      <stop offset="60%" stop-color="#fbbf24" stop-opacity="0.12" />
+      <stop offset="100%" stop-color="#000000" stop-opacity="0" />
+    </linearGradient>
+  </defs>
+
+  <!-- Base Dark Canvas -->
+  <rect width="1920" height="1080" fill="url(#prayerBgGrad)" />
+
+  <!-- Radiance Overlays -->
+  <rect width="1920" height="1080" fill="url(#divineLight)" />
+  <rect width="1920" height="1080" fill="url(#candleGlow1)" />
+  <rect width="1920" height="1080" fill="url(#candleGlow2)" />
+
+  <!-- Heavenly Rays of Glory -->
+  <polygon points="960,0 800,1080 1120,1080" fill="url(#prayerRayCenter)" />
+  <polygon points="960,0 300,1080 550,1080" fill="url(#prayerRay1)" />
+  <polygon points="960,0 1370,1080 1620,1080" fill="url(#prayerRay2)" />
+  <polygon points="960,0 0,700 0,950" fill="url(#prayerRay1)" opacity="0.5" />
+  <polygon points="960,0 1920,700 1920,950" fill="url(#prayerRay2)" opacity="0.5" />
+
+  <!-- Glowing Cross in the Sanctuary Center -->
+  <g fill="#ffffff" fill-opacity="0.15">
+    <rect x="954" y="160" width="12" height="380" rx="6" />
+    <rect x="860" y="260" width="200" height="12" rx="6" />
+  </g>
+  <g fill="#fbbf24" fill-opacity="0.25" filter="blur(8px)">
+    <rect x="956" y="160" width="8" height="380" rx="4" />
+    <rect x="860" y="262" width="200" height="8" rx="4" />
+  </g>
+
+  <!-- Holy Spirit / Ascending Light Spheres -->
+  <g fill="#ffffff" fill-opacity="0.4">
+    <circle cx="960" cy="200" r="4" />
+    <circle cx="920" cy="290" r="3" />
+    <circle cx="1000" cy="330" r="2.5" />
+    <circle cx="850" cy="420" r="3.5" />
+    <circle cx="1070" cy="400" r="3" />
+    <circle cx="760" cy="520" r="2" />
+    <circle cx="1160" cy="510" r="2.5" />
+    <circle cx="680" cy="620" r="3" />
+    <circle cx="1240" cy="640" r="3.5" />
+    <circle cx="960" cy="580" r="4" />
+  </g>
+
+  <!-- Ambient Altar Glow -->
+  <circle cx="960" cy="950" r="350" fill="#dd5234" fill-opacity="0.12" filter="blur(60px)" />
+</svg>

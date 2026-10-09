@@ -1,9 +1,29 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { Users, ArrowRight, Check, X } from 'lucide-react';
 
 export const ParallaxGroups: React.FC = () => {
   const [modalOpen, setModalOpen] = useState(false);
   const [joinedGroup, setJoinedGroup] = useState<string | null>(null);
+  const sectionRef = useRef<HTMLElement>(null);
+  const [offsetY, setOffsetY] = useState(0);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      if (!sectionRef.current) return;
+      const rect = sectionRef.current.getBoundingClientRect();
+      const windowHeight = window.innerHeight;
+      // Calculate how far through the viewport the section is
+      if (rect.top <= windowHeight && rect.bottom >= 0) {
+        const speed = 0.25;
+        const offset = (rect.top - windowHeight / 2) * speed;
+        setOffsetY(offset);
+      }
+    };
+
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    handleScroll();
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
 
   const groups = [
     {
@@ -36,33 +56,40 @@ export const ParallaxGroups: React.FC = () => {
     <>
       <section
         id="groups"
-        className="relative py-16 sm:py-24 text-white overflow-hidden bg-fixed-parallax"
-        style={{
-          backgroundImage: `url('https://images.unsplash.com/photo-1511632765486-a01980e01a18?auto=format&fit=crop&w=1920&q=80')`
-        }}
+        ref={sectionRef}
+        className="relative py-20 sm:py-28 text-white overflow-hidden"
       >
-        {/* Dark Overlay */}
-        <div className="absolute inset-0 bg-black/65" />
+        {/* Parallax Background Layer */}
+        <div
+          className="absolute -top-24 -bottom-24 left-0 right-0 w-full h-[calc(100%+192px)] bg-cover bg-center pointer-events-none transition-transform duration-75 ease-out will-change-transform"
+          style={{
+            backgroundImage: `url('/connect-groups-bg.svg')`,
+            transform: `translateY(${offsetY}px) scale(1.08)`
+          }}
+        />
+
+        {/* Ambient Dark/Warm Gradient Tint */}
+        <div className="absolute inset-0 bg-gradient-to-b from-black/70 via-black/50 to-black/75 pointer-events-none" />
 
         {/* Content */}
         <div className="relative z-10 max-w-3xl mx-auto px-4 sm:px-6 text-center">
-          <span className="text-xs font-heading font-bold uppercase tracking-widest text-[#dd5234] bg-black/60 px-3.5 py-1 border border-[#dd5234]/40 inline-block mb-3.5">
+          <span className="text-xs font-heading font-bold uppercase tracking-widest text-[#dd5234] bg-black/70 px-4 py-1.5 border border-[#dd5234]/40 inline-block mb-4 shadow-lg">
             Connect Groups & Community
           </span>
 
-          <h2 className="font-heading font-extrabold text-2xl sm:text-4xl md:text-5xl uppercase tracking-tight leading-tight mb-4">
+          <h2 className="font-heading font-extrabold text-2xl sm:text-4xl md:text-5xl uppercase tracking-tight leading-tight mb-4 drop-shadow-lg">
             Find Your People. <br />
             <span className="text-[#dd5234]">Grow in Faith.</span> <br />
             Do Life Together.
           </h2>
 
-          <p className="text-sm sm:text-base md:text-lg text-neutral-200 font-light max-w-xl mx-auto mb-8 leading-relaxed">
+          <p className="text-sm sm:text-base md:text-lg text-neutral-200 font-light max-w-xl mx-auto mb-8 leading-relaxed drop-shadow">
             Real life happens in circles, not just in rows. Connect with people who will encourage you, pray with you, and stand with you.
           </p>
 
           <button
             onClick={() => setModalOpen(true)}
-            className="bg-[#dd5234] hover:bg-[#b1422a] text-white px-7 py-3.5 font-heading font-bold uppercase tracking-wider text-xs sm:text-sm transition-all duration-200 shadow-xl transform hover:-translate-y-0.5 inline-flex items-center gap-2 cursor-pointer"
+            className="bg-[#dd5234] hover:bg-[#b1422a] text-white px-7 py-3.5 font-heading font-bold uppercase tracking-wider text-xs sm:text-sm transition-all duration-200 shadow-2xl transform hover:-translate-y-0.5 inline-flex items-center gap-2 cursor-pointer"
           >
             <Users className="w-4 h-4" />
             <span>Explore Connect Groups</span>

@@ -160,13 +160,13 @@ export const churchData: ChurchInfo = {
     {
       title: "Children's Sunday Class",
       description: "Dedicated Sunday School from 10:30 AM to 11:50 AM with interactive Bible stories, moral lessons, and joy-filled worship.",
-      image: "https://images.unsplash.com/photo-1485546246426-74dc88dec4d9?auto=format&fit=crop&w=800&q=80",
+      image: "/upc-logo.jpg",
       category: "Every Sunday 10:30 AM"
     },
     {
       title: "Youth Prayer & Ministry",
       description: "Empowering the next generation with weekly youth prayer every Sunday at 1:00 PM for spiritual fire and purpose.",
-      image: "https://images.unsplash.com/photo-1529156069898-49953e39b3ac?auto=format&fit=crop&w=800&q=80",
+      image: "/youth-leader-goodwin.jpg",
       category: "Every Sunday 1:00 PM"
     },
     {
@@ -178,7 +178,7 @@ export const churchData: ChurchInfo = {
     {
       title: "Spirit-Filled Worship & Preaching",
       description: "Encounter God's presence during our Early Morning (5:30 AM) and Main Morning (9:00 AM) services led by Pastor Rajan Joel.",
-      image: "https://images.unsplash.com/photo-1516450360452-9312f5e86fc7?auto=format&fit=crop&w=800&q=80",
+      image: "/pastor-rajan-joel.jpg",
       category: "Sunday 5:30 AM & 9:00 AM"
     }
   ],

@@ -23,7 +23,7 @@ export const Hero: React.FC<HeroProps> = ({
           loop
           muted
           playsInline
-          poster="https://images.unsplash.com/photo-1510936111840-65e151ad71bb?auto=format&fit=crop&w=1920&q=80"
+          poster="/pastor-rajan-joel.jpg"
           className="w-full h-full object-cover scale-105 filter brightness-75 contrast-110"
         >
           <source
