@@ -35,6 +35,7 @@ export interface ChurchInfo {
     youtube: string;
     email: string;
     phone: string;
+    whatsappNumber: string;
   };
   marqueeItems: string[];
   ministries: {
@@ -65,6 +66,15 @@ export interface ChurchInfo {
     id: string;
     name: string;
     description: string;
+  }[];
+  dailyPromises: {
+    id: number;
+    reference: string;
+    referenceTamil: string;
+    textEnglish: string;
+    textTamil: string;
+    theme: string;
+    themeTamil: string;
   }[];
 }
 
@@ -134,7 +144,8 @@ export const churchData: ChurchInfo = {
     instagram: "https://www.instagram.com/upc_church_bodi/",
     youtube: "https://www.youtube.com/@UnitedpentecostalchurchBODI",
     email: "contact@upcchurch.org",
-    phone: "+1 (800) 555-0199"
+    phone: "+91 98400 00000",
+    whatsappNumber: "919840000000"
   },
   marqueeItems: [
     "WE CAN'T WAIT TO MEET YOU!",
@@ -231,6 +242,71 @@ export const churchData: ChurchInfo = {
       id: "praise",
       name: "Praise Report & Thanksgiving",
       description: "Celebrating answered prayers and the faithfulness of God in your life."
+    }
+  ],
+  dailyPromises: [
+    {
+      id: 1,
+      reference: "Isaiah 41:10",
+      referenceTamil: "ஏசாயா 41:10",
+      theme: "Divine Strength & Protection",
+      themeTamil: "தெய்வீக பெலன் & பாதுகாப்பு",
+      textEnglish: "Fear not, for I am with you; be not dismayed, for I am your God; I will strengthen you, I will help you, I will uphold you with my righteous right hand.",
+      textTamil: "பயப்படாதே, நான் உன்னுடனே இருக்கிறேன்; திகையாதே, நான் உன் தேவன்; நான் உன்னைப் பலப்படுத்தி உனக்குச் சகாயம்பண்ணுவேன்; என் நீதியின் வலதுகரத்தினால் உன்னைத் தாங்குவேன்."
+    },
+    {
+      id: 2,
+      reference: "Jeremiah 29:11",
+      referenceTamil: "எரேமியா 29:11",
+      theme: "Hope & Future",
+      themeTamil: "நம்பிக்கை & எதிர்காலம்",
+      textEnglish: "For I know the plans I have for you, declares the LORD, plans to prosper you and not to harm you, plans to give you hope and a future.",
+      textTamil: "நீங்கள் எதிர்பார்த்திருக்கும் முடிவை உங்களுக்குக் கொடுக்கும்படிக்கு நான் உங்கள்பேரில் நினைத்திருக்கிற நினைவுகளை அறிவேன் என்று கர்த்தர் சொல்லுகிறார்; அவைகள் தீமைக்கல்ல, சமாதானத்துக்கேதுவான நினைவுகளே."
+    },
+    {
+      id: 3,
+      reference: "Philippians 4:13",
+      referenceTamil: "பிலிப்பியர் 4:13",
+      theme: "Victory Through Christ",
+      themeTamil: "கிறிஸ்துவுக்குள் வெற்றி",
+      textEnglish: "I can do all things through Christ who strengthens me.",
+      textTamil: "என்னைப் பெலப்படுத்துகிற கிறிஸ்துவினாலே எல்லாவற்றையுஞ்செய்ய எனக்குப் பெலனுண்டு."
+    },
+    {
+      id: 4,
+      reference: "Psalm 23:1",
+      referenceTamil: "சங்கீதம் 23:1",
+      theme: "The Lord is My Shepherd",
+      themeTamil: "கர்த்தர் என் மேய்ப்பர்",
+      textEnglish: "The LORD is my shepherd; I shall not want. He makes me to lie down in green pastures; He leads me beside the still waters.",
+      textTamil: "கர்த்தர் என் மேய்ப்பராயிருக்கிறார்; நான் தாழ்ச்சியடையேன். அவர் என்னைப் புல்லுள்ள இடங்களில் படுக்கப்பண்ணி, அமர்ந்த தண்ணீர்கள் அண்டையில் என்னைக் கொண்டுபோய் விடுகிறார்."
+    },
+    {
+      id: 5,
+      reference: "Matthew 11:28",
+      referenceTamil: "மத்தேயு 11:28",
+      theme: "Rest for the Weary",
+      themeTamil: "இளைப்பாறுதல்",
+      textEnglish: "Come to me, all you who are weary and burdened, and I will give you rest. Take my yoke upon you and learn from me.",
+      textTamil: "வருத்தப்பட்டுப் பாரஞ்சுமக்கிறவர்களே! நீங்கள் எல்லாரும் என்னிடத்தில் வாருங்கள்; நான் உங்களுக்கு இளைப்பாறுதல் தருவேன்."
+    },
+    {
+      id: 6,
+      reference: "Joshua 1:9",
+      referenceTamil: "யோசுவா 1:9",
+      theme: "Courage & Faith",
+      themeTamil: "தைரியமும் விசுவாசமும்",
+      textEnglish: "Have I not commanded you? Be strong and courageous. Do not be afraid; do not be discouraged, for the LORD your God will be with you wherever you go.",
+      textTamil: "நான் உனக்குக் கட்டளையிடவில்லையா? பலங்கொண்டு திடமனதாயிரு; திகையாதே, கலங்காதே, நீ போகும் இடமெல்லாம் உன் தேவனாகிய கர்த்தர் உன்னோடே இருக்கிறார்."
+    },
+    {
+      id: 7,
+      reference: "John 14:27",
+      referenceTamil: "யோவான் 14:27",
+      theme: "Supernatural Peace",
+      themeTamil: "தெய்வீக சமாதானம்",
+      textEnglish: "Peace I leave with you; my peace I give you. I do not give to you as the world gives. Do not let your hearts be troubled and do not be afraid.",
+      textTamil: "சமாதானத்தை உங்களுக்கு வைத்துப்போகிறேன், என்னுடைய சமாதானத்தையே உங்களுக்குக் கொடுக்கிறேன்; உலகம் கொடுக்கிறபிரகாரம் நான் உங்களுக்குக் கொடுக்கிறதில்லை. உங்கள் இருதயம் கலங்காமலும் பயப்படாமலும் இருப்பதாக."
     }
   ]
 };

@@ -1,17 +1,20 @@
 import { useState, useEffect } from 'react';
 import { Navbar } from './components/Navbar';
 import { Hero } from './components/Hero';
+import { ServiceCountdownBanner } from './components/ServiceCountdownBanner';
 import { MarqueeTicker } from './components/MarqueeTicker';
 import { QuickInfoCards } from './components/QuickInfoCards';
 import { PastoralWelcome } from './components/PastoralWelcome';
 import { ParallaxGroups } from './components/ParallaxGroups';
 import { LatestSermon } from './components/LatestSermon';
+import { DailyPromiseSection } from './components/DailyPromiseSection';
 import { MinistriesSection } from './components/MinistriesSection';
 import { YouthLeaderSection } from './components/YouthLeaderSection';
 import { PrayerRequestSection } from './components/PrayerRequestSection';
 import { Footer } from './components/Footer';
 import { PlanVisitModal } from './components/PlanVisitModal';
 import { LocationModal } from './components/LocationModal';
+import { WhatsAppFloatingHotline } from './components/WhatsAppFloatingHotline';
 import { ArrowUp } from 'lucide-react';
 
 export function App() {
@@ -59,40 +62,49 @@ export function App() {
         onScrollToSermons={scrollToSermons}
       />
 
-      {/* 3. Infinite Marquee Announcement Ribbon */}
+      {/* 3. Live Service Status & Next Sunday Countdown Banner */}
+      <ServiceCountdownBanner
+        onOpenPlanVisit={() => handleOpenPlanVisit(false)}
+        onOpenLocation={() => setLocationOpen(true)}
+      />
+
+      {/* 4. Infinite Marquee Announcement Ribbon */}
       <MarqueeTicker />
 
-      {/* 4. 3-Column Service Info Cards */}
+      {/* 5. 3-Column Service Info Cards */}
       <QuickInfoCards
         onOpenPlanVisit={() => handleOpenPlanVisit(false)}
         onOpenLocation={() => setLocationOpen(true)}
       />
 
-      {/* 5. Pastoral Welcome & Mission (50/50 Split) */}
+      {/* 6. Pastoral Welcome & Mission (50/50 Split) */}
       <PastoralWelcome
         onOpenPlanVisit={() => handleOpenPlanVisit(false)}
       />
 
-      {/* 6. Parallax Connect Groups Banner */}
+      {/* 7. Parallax Connect Groups Banner */}
       <ParallaxGroups />
 
-      {/* 7. Latest Message & Preaching Media Player */}
+      {/* 8. Latest Message & Preaching Media Player */}
       <LatestSermon />
 
-      {/* 8. Ministries (Kids, Youth, Worship, Community) */}
+      {/* 9. Daily Promise of the Day (Bilingual Tamil & English) */}
+      <DailyPromiseSection />
+
+      {/* 10. Ministries (Kids, Youth, Worship, Community) */}
       <MinistriesSection
         onOpenPlanVisit={handleOpenPlanVisit}
       />
 
-      {/* 9. Youth Leadership (Bro. Goodwin & UPC Bodi Youth) */}
+      {/* 11. Youth Leadership (Bro. Goodwin & UPC Bodi Youth) */}
       <YouthLeaderSection
         onOpenPlanVisit={() => handleOpenPlanVisit(false)}
       />
 
-      {/* 10. Prayer Request & Intercession (Replaced Giving Section) */}
+      {/* 12. Prayer Request & Intercession */}
       <PrayerRequestSection />
 
-      {/* 11. Mega Footer */}
+      {/* 13. Mega Footer */}
       <Footer
         onOpenPlanVisit={() => handleOpenPlanVisit(false)}
         onOpenLocation={() => setLocationOpen(true)}
@@ -109,6 +121,9 @@ export function App() {
         isOpen={locationOpen}
         onClose={() => setLocationOpen(false)}
       />
+
+      {/* Floating WhatsApp Prayer & Help Hotline */}
+      <WhatsAppFloatingHotline />
 
       {/* Floating Back to Top Button */}
       {showScrollTop && (
