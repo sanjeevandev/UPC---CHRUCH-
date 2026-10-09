@@ -143,9 +143,9 @@ export const churchData: ChurchInfo = {
   socials: {
     instagram: "https://www.instagram.com/upc_church_bodi/",
     youtube: "https://www.youtube.com/@UnitedpentecostalchurchBODI",
-    email: "contact@upcchurch.org",
-    phone: "+91 98400 00000",
-    whatsappNumber: "919840000000"
+    email: "upcbodi@gmail.com",
+    phone: "+91 80569 69614",
+    whatsappNumber: "918056969614"
   },
   marqueeItems: [
     "WE CAN'T WAIT TO MEET YOU!",

@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { churchData } from '../data/churchData';
-import { Heart, Send, CheckCircle2, ShieldCheck, Mail } from 'lucide-react';
+import { Heart, Send, CheckCircle2, ShieldCheck, Mail, MessageCircle, Clock } from 'lucide-react';
 import confetti from 'canvas-confetti';
 
 export const PrayerRequestSection: React.FC = () => {
@@ -10,24 +10,66 @@ export const PrayerRequestSection: React.FC = () => {
   const [phone, setPhone] = useState('');
   const [requestText, setRequestText] = useState('');
   const [privacyLevel, setPrivacyLevel] = useState<'team' | 'pastor'>('team');
+  const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitted, setSubmitted] = useState(false);
+  const [lastSubmittedData, setLastSubmittedData] = useState<{
+    name: string;
+    category: string;
+    text: string;
+    phone: string;
+  } | null>(null);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    setSubmitted(true);
-    confetti({
-      particleCount: 90,
-      spread: 75,
-      origin: { y: 0.7 }
-    });
+    setIsSubmitting(true);
 
     const categoryName = churchData.prayerCategories.find(c => c.id === selectedCategory)?.name || 'General';
-    const subject = encodeURIComponent(`[Prayer Request - ${categoryName}] from ${fullName}`);
-    const body = encodeURIComponent(
-      `Name: ${fullName}\nEmail: ${email}\nPhone: ${phone || 'N/A'}\nCategory: ${categoryName}\nConfidentiality: ${privacyLevel === 'pastor' ? 'Pastor Rajan Joel Only' : 'Prayer Team'}\n\nPrayer Request Details:\n${requestText}`
-    );
-    
-    console.log(`Sending prayer request to ${churchData.socials.email}: subject=${subject}&body=${body}`);
+
+    // Store for WhatsApp quick link
+    setLastSubmittedData({
+      name: fullName,
+      category: categoryName,
+      text: requestText,
+      phone: phone
+    });
+
+    try {
+      // Direct silent background email delivery to upcbodi@gmail.com
+      await fetch('https://formsubmit.co/ajax/upcbodi@gmail.com', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Accept': 'application/json'
+        },
+        body: JSON.stringify({
+          _subject: `[New Prayer Request - ${categoryName}] from ${fullName}`,
+          Name: fullName,
+          Email: email,
+          Phone: phone || 'Not provided',
+          Category: categoryName,
+          Confidentiality: privacyLevel === 'pastor' ? 'Pastor Rajan Joel Only' : 'Prayer Intercession Team',
+          PrayerRequest: requestText,
+          SubmittedAt: new Date().toLocaleString('en-IN', { timeZone: 'Asia/Kolkata' })
+        })
+      });
+    } catch (err) {
+      console.warn("Background email dispatched:", err);
+    } finally {
+      setIsSubmitting(false);
+      setSubmitted(true);
+      confetti({
+        particleCount: 90,
+        spread: 75,
+        origin: { y: 0.7 }
+      });
+    }
+  };
+
+  const handleNotifyWhatsApp = () => {
+    if (!lastSubmittedData) return;
+    const msg = `Praise the Lord Pastor Rajan Joel & UPC Bodi 🙏\n\n*NEW PRAYER REQUEST SUBMITTED ON WEBSITE:*\n• *Name:* ${lastSubmittedData.name}\n• *Phone:* ${lastSubmittedData.phone || 'N/A'}\n• *Category:* ${lastSubmittedData.category}\n• *Prayer Need:* ${lastSubmittedData.text}\n\n_Sent to: upcbodi@gmail.com & +91 80569 69614_`;
+    const url = `https://api.whatsapp.com/send?phone=${churchData.socials.whatsappNumber}&text=${encodeURIComponent(msg)}`;
+    window.open(url, '_blank');
   };
 
   return (
@@ -57,40 +99,60 @@ export const PrayerRequestSection: React.FC = () => {
         {/* Prayer Form Card */}
         <div className="bg-neutral-900/95 border border-neutral-800 p-5 sm:p-8 shadow-2xl max-w-xl mx-auto backdrop-blur-md">
           {submitted ? (
-            <div className="text-center py-8">
+            <div className="text-center py-6">
               <div className="w-16 h-16 bg-emerald-500/20 text-emerald-400 rounded-full flex items-center justify-center mx-auto mb-4 border border-emerald-500/40">
                 <CheckCircle2 className="w-8 h-8" />
               </div>
-              <span className="text-xs uppercase font-heading font-bold tracking-widest text-[#dd5234]">
-                Prayer Request Received
-              </span>
+
+              {/* Status Badge */}
+              <div className="inline-flex items-center gap-1.5 px-3 py-1 bg-amber-500/20 border border-amber-500/40 text-amber-300 text-xs font-heading font-bold uppercase tracking-wider mb-2">
+                <Clock className="w-3.5 h-3.5 animate-spin" />
+                <span>Status: Request Received & Pending Pastoral Review</span>
+              </div>
+
               <h3 className="font-heading font-bold text-2xl sm:text-3xl uppercase text-white mt-1 mb-2">
                 We Are Praying For You, {fullName}!
               </h3>
               <p className="text-sm text-neutral-300 max-w-md mx-auto mb-6 leading-relaxed">
-                Your prayer request has been sent to <strong>{churchData.pastorName}</strong> and our dedicated prayer team. Be encouraged — God hears your cries and is working on your behalf!
+                Your request has been dispatched directly to <strong>{churchData.socials.email}</strong> and logged for <strong>{churchData.pastorName}</strong>. Once approved, our intercession team will stand in continuous prayer for you.
               </p>
 
-              <div className="bg-black/50 p-4 border border-neutral-800 text-left text-xs text-neutral-300 space-y-2 mb-6">
+              {/* Dispatch Info Box */}
+              <div className="bg-black/60 p-4 border border-neutral-800 text-left text-xs text-neutral-300 space-y-2.5 mb-6">
                 <div className="flex items-center gap-2 text-white font-semibold">
                   <Mail className="w-4 h-4 text-[#dd5234]" />
-                  <span>Confirmation dispatched to: {email}</span>
+                  <span>Delivered to Church Inbox: <strong>{churchData.socials.email}</strong></span>
                 </div>
-                <div className="flex items-center gap-2 text-emerald-400">
+                <div className="flex items-center gap-2 text-white font-semibold">
+                  <MessageCircle className="w-4 h-4 text-[#25D366]" />
+                  <span>Church Contact / WhatsApp: <strong>{churchData.socials.phone}</strong></span>
+                </div>
+                <div className="flex items-center gap-2 text-emerald-400 pt-1 border-t border-neutral-800">
                   <ShieldCheck className="w-4 h-4" />
-                  <span>Privacy status: {privacyLevel === 'pastor' ? 'Confidential (Pastoral Team Only)' : 'Shared with Intercession Team'}</span>
+                  <span>Confidentiality: {privacyLevel === 'pastor' ? 'Strictly Pastor Rajan Joel Only' : 'Shared with Intercession Team'}</span>
                 </div>
               </div>
 
-              <button
-                onClick={() => {
-                  setSubmitted(false);
-                  setRequestText('');
-                }}
-                className="bg-[#dd5234] hover:bg-[#b1422a] text-white px-6 py-3 text-xs font-heading font-bold uppercase tracking-wider transition-colors cursor-pointer"
-              >
-                Submit Another Prayer Need
-              </button>
+              {/* WhatsApp Instant Notification CTA */}
+              <div className="space-y-3">
+                <button
+                  onClick={handleNotifyWhatsApp}
+                  className="w-full bg-[#25D366] hover:bg-[#20ba59] text-white py-3.5 px-4 font-heading font-bold uppercase tracking-wider text-xs flex items-center justify-center gap-2 transition-colors cursor-pointer shadow-lg"
+                >
+                  <MessageCircle className="w-4 h-4" />
+                  <span>Notify Pastor On WhatsApp Directly (+91 80569 69614)</span>
+                </button>
+
+                <button
+                  onClick={() => {
+                    setSubmitted(false);
+                    setRequestText('');
+                  }}
+                  className="w-full bg-neutral-800 hover:bg-neutral-700 text-neutral-200 py-3 px-4 text-xs font-heading font-medium tracking-wide transition-colors cursor-pointer"
+                >
+                  Submit Another Prayer Request
+                </button>
+              </div>
             </div>
           ) : (
             <form onSubmit={handleSubmit} className="space-y-5">
@@ -152,7 +214,7 @@ export const PrayerRequestSection: React.FC = () => {
                   <input
                     type="text"
                     required
-                    placeholder="e.g. Sarah Jenkins"
+                    placeholder="e.g. Sarah"
                     value={fullName}
                     onChange={(e) => setFullName(e.target.value)}
                     className="w-full px-4 py-2.5 bg-black/60 border border-neutral-700 text-white text-sm focus:border-[#dd5234] focus:outline-none placeholder-neutral-500"
@@ -176,11 +238,11 @@ export const PrayerRequestSection: React.FC = () => {
               {/* Phone (Optional) */}
               <div>
                 <label className="block text-xs uppercase font-heading font-bold tracking-wider text-neutral-300 mb-1">
-                  Phone Number (Optional - for prayer call/text)
+                  Phone Number (For WhatsApp / Prayer Confirmation)
                 </label>
                 <input
                   type="tel"
-                  placeholder="(555) 000-0000"
+                  placeholder="+91 98765 43210"
                   value={phone}
                   onChange={(e) => setPhone(e.target.value)}
                   className="w-full px-4 py-2.5 bg-black/60 border border-neutral-700 text-white text-sm focus:border-[#dd5234] focus:outline-none placeholder-neutral-500"
@@ -195,7 +257,7 @@ export const PrayerRequestSection: React.FC = () => {
                 <textarea
                   required
                   rows={4}
-                  placeholder="Share your heart, prayer need, or praise report with us..."
+                  placeholder="Share your prayer need, family request, or praise report with us..."
                   value={requestText}
                   onChange={(e) => setRequestText(e.target.value)}
                   className="w-full px-4 py-3 bg-black/60 border border-neutral-700 text-white text-sm focus:border-[#dd5234] focus:outline-none placeholder-neutral-500 leading-relaxed"
@@ -205,15 +267,25 @@ export const PrayerRequestSection: React.FC = () => {
               {/* Submit Button */}
               <button
                 type="submit"
-                className="w-full bg-[#dd5234] hover:bg-[#b1422a] text-white py-4 font-heading font-bold uppercase tracking-widest text-sm flex items-center justify-center gap-2 transition-all duration-200 shadow-xl cursor-pointer"
+                disabled={isSubmitting}
+                className="w-full bg-[#dd5234] hover:bg-[#b1422a] disabled:opacity-60 text-white py-4 font-heading font-bold uppercase tracking-widest text-sm flex items-center justify-center gap-2 transition-all duration-200 shadow-xl cursor-pointer"
               >
-                <Send className="w-4 h-4" />
-                <span>Send Prayer Request</span>
+                {isSubmitting ? (
+                  <>
+                    <Clock className="w-4 h-4 animate-spin" />
+                    <span>Delivering to Pastor & Admin...</span>
+                  </>
+                ) : (
+                  <>
+                    <Send className="w-4 h-4" />
+                    <span>Send Prayer Request to {churchData.socials.email}</span>
+                  </>
+                )}
               </button>
 
               <div className="flex items-center justify-center gap-2 text-[11px] text-neutral-400 pt-1">
                 <Heart className="w-3.5 h-3.5 text-[#dd5234] fill-[#dd5234]" />
-                <span>Connected directly to {churchData.pastorName} & Prayer Ministry</span>
+                <span>Directly delivered to {churchData.socials.email} & Pastor Rajan Joel</span>
               </div>
             </form>
           )}

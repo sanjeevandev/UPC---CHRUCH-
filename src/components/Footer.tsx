@@ -143,6 +143,20 @@ export const Footer = ({ onOpenPlanVisit, onOpenLocation }: FooterProps) => {
               <p className="text-neutral-500 text-xs">
                 {churchData.location.landmark}
               </p>
+              <div className="pt-2 space-y-1.5 text-xs text-neutral-300">
+                <p>
+                  <strong className="text-white">Email:</strong>{' '}
+                  <a href={`mailto:${churchData.socials.email}`} className="text-[#dd5234] hover:underline">
+                    {churchData.socials.email}
+                  </a>
+                </p>
+                <p>
+                  <strong className="text-white">Phone / WhatsApp:</strong>{' '}
+                  <a href={`https://wa.me/${churchData.socials.whatsappNumber}`} target="_blank" rel="noreferrer" className="text-[#25D366] hover:underline">
+                    {churchData.socials.phone}
+                  </a>
+                </p>
+              </div>
               <div className="pt-2">
                 <button
                   onClick={onOpenLocation}
