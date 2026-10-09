@@ -8,6 +8,7 @@ import { PastoralWelcome } from './components/PastoralWelcome';
 import { ParallaxGroups } from './components/ParallaxGroups';
 import { LatestSermon } from './components/LatestSermon';
 import { DailyPromiseSection } from './components/DailyPromiseSection';
+import { SectionDividerRibbon } from './components/SectionDividerRibbon';
 import { MinistriesSection } from './components/MinistriesSection';
 import { YouthLeaderSection } from './components/YouthLeaderSection';
 import { PrayerRequestSection } from './components/PrayerRequestSection';
@@ -91,7 +92,10 @@ export function App() {
       {/* 9. Daily Promise of the Day (Bilingual Tamil & English) */}
       <DailyPromiseSection />
 
-      {/* 10. Ministries (Kids, Youth, Worship, Community) */}
+      {/* Motivational Divider Ribbon */}
+      <SectionDividerRibbon />
+
+      {/* 10. Ministries (Kids, Youth, Worship, Community - A Place For Everyone) */}
       <MinistriesSection
         onOpenPlanVisit={handleOpenPlanVisit}
       />

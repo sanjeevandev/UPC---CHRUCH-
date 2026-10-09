@@ -37,7 +37,7 @@ export const DailyPromiseSection: React.FC = () => {
   };
 
   return (
-    <section className="py-16 sm:py-20 bg-gradient-to-b from-[#fffaf4] via-[#fbf6ee] to-[#f6efe4] text-[#222222] relative overflow-hidden border-t border-[#eddccb]/60 border-b-4 border-[#111111]">
+    <section className="py-16 sm:py-20 bg-gradient-to-b from-[#fffaf4] via-[#fbf6ee] to-[#f6efe4] text-[#222222] relative overflow-hidden border-t border-[#eddccb]/60">
       {/* Radiant Background Ambient Warm Lights */}
       <div className="absolute top-0 right-1/4 w-96 h-96 bg-[#dd5234]/10 rounded-full blur-3xl pointer-events-none" />
       <div className="absolute bottom-0 left-1/4 w-96 h-96 bg-amber-400/15 rounded-full blur-3xl pointer-events-none" />
