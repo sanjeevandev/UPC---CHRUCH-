@@ -1,41 +1,9 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState } from 'react';
 import { Users, ArrowRight, Check, X } from 'lucide-react';
 
 export const ParallaxGroups: React.FC = () => {
   const [modalOpen, setModalOpen] = useState(false);
   const [joinedGroup, setJoinedGroup] = useState<string | null>(null);
-  const sectionRef = useRef<HTMLElement>(null);
-  const [offsetY, setOffsetY] = useState(0);
-
-  useEffect(() => {
-    let animationFrameId: number;
-
-    const handleScroll = () => {
-      if (!sectionRef.current) return;
-      const rect = sectionRef.current.getBoundingClientRect();
-      const windowHeight = window.innerHeight;
-      
-      // Calculate smooth parallax offset when section is in or near viewport
-      if (rect.top <= windowHeight && rect.bottom >= 0) {
-        const speed = 0.32;
-        const relativeScroll = (rect.top - windowHeight / 2) * speed;
-        setOffsetY(relativeScroll);
-      }
-    };
-
-    const onScroll = () => {
-      cancelAnimationFrame(animationFrameId);
-      animationFrameId = requestAnimationFrame(handleScroll);
-    };
-
-    window.addEventListener('scroll', onScroll, { passive: true });
-    handleScroll();
-
-    return () => {
-      window.removeEventListener('scroll', onScroll);
-      cancelAnimationFrame(animationFrameId);
-    };
-  }, []);
 
   const groups = [
     {
@@ -68,20 +36,14 @@ export const ParallaxGroups: React.FC = () => {
     <>
       <section
         id="groups"
-        ref={sectionRef}
-        className="relative py-28 sm:py-36 text-white overflow-hidden"
+        className="relative py-24 sm:py-36 text-white overflow-hidden bg-fixed-parallax"
+        style={{
+          backgroundImage: `url('/upc-bodi-congregation.jpg')`,
+          backgroundPosition: 'center 35%'
+        }}
       >
-        {/* Authentic UPC Bodi Congregation Photo with Smooth Parallax Scroll */}
-        <div
-          className="absolute -top-36 -bottom-36 left-0 right-0 w-full h-[calc(100%+288px)] bg-cover bg-center pointer-events-none transition-transform duration-100 ease-out will-change-transform filter brightness-75 contrast-105"
-          style={{
-            backgroundImage: `url('/upc-bodi-congregation.jpg')`,
-            transform: `translate3d(0, ${offsetY}px, 0) scale(1.12)`
-          }}
-        />
-
         {/* Cinematic Gradient Tint Overlay */}
-        <div className="absolute inset-0 bg-gradient-to-b from-black/75 via-black/55 to-black/80 pointer-events-none" />
+        <div className="absolute inset-0 bg-gradient-to-b from-black/80 via-black/60 to-black/80" />
 
         {/* Content */}
         <div className="relative z-10 max-w-4xl mx-auto px-4 sm:px-6 text-center">

@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useState } from 'react';
 import { churchData } from '../data/churchData';
 import { Heart, Send, CheckCircle2, ShieldCheck, Mail, MessageCircle, Clock } from 'lucide-react';
 import confetti from 'canvas-confetti';
@@ -18,38 +18,6 @@ export const PrayerRequestSection: React.FC = () => {
     text: string;
     phone: string;
   } | null>(null);
-
-  const sectionRef = useRef<HTMLElement>(null);
-  const [offsetY, setOffsetY] = useState(0);
-
-  useEffect(() => {
-    let animationFrameId: number;
-
-    const handleScroll = () => {
-      if (!sectionRef.current) return;
-      const rect = sectionRef.current.getBoundingClientRect();
-      const windowHeight = window.innerHeight;
-      
-      if (rect.top <= windowHeight && rect.bottom >= 0) {
-        const speed = 0.28;
-        const relativeScroll = (rect.top - windowHeight / 2) * speed;
-        setOffsetY(relativeScroll);
-      }
-    };
-
-    const onScroll = () => {
-      cancelAnimationFrame(animationFrameId);
-      animationFrameId = requestAnimationFrame(handleScroll);
-    };
-
-    window.addEventListener('scroll', onScroll, { passive: true });
-    handleScroll();
-
-    return () => {
-      window.removeEventListener('scroll', onScroll);
-      cancelAnimationFrame(animationFrameId);
-    };
-  }, []);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -106,20 +74,14 @@ export const PrayerRequestSection: React.FC = () => {
   return (
     <section
       id="prayer"
-      ref={sectionRef}
-      className="relative py-20 sm:py-28 text-white overflow-hidden"
+      className="relative py-20 sm:py-32 text-white overflow-hidden bg-fixed-parallax"
+      style={{
+        backgroundImage: `url('/upc-bodi-worship-night.jpg')`,
+        backgroundPosition: 'center 40%'
+      }}
     >
-      {/* Authentic UPC Bodi Worship Night Photo with Parallax Scroll */}
-      <div
-        className="absolute -top-36 -bottom-36 left-0 right-0 w-full h-[calc(100%+288px)] bg-cover bg-center pointer-events-none transition-transform duration-100 ease-out will-change-transform filter brightness-70 contrast-110"
-        style={{
-          backgroundImage: `url('/upc-bodi-worship-night.jpg')`,
-          transform: `translate3d(0, ${offsetY}px, 0) scale(1.12)`
-        }}
-      />
-
       {/* Atmospheric Dark & Warm Gradient Overlay */}
-      <div className="absolute inset-0 bg-gradient-to-b from-black/85 via-black/70 to-black/90 pointer-events-none" />
+      <div className="absolute inset-0 bg-gradient-to-b from-black/85 via-black/75 to-black/90" />
 
       <div className="relative z-10 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center max-w-2xl mx-auto mb-10">
