@@ -124,7 +124,7 @@ export const PlanVisitModal: React.FC<PlanVisitModalProps> = ({
                 className="w-full bg-[#25D366] hover:bg-[#20ba59] text-white py-3.5 font-heading font-bold uppercase tracking-wider text-xs flex items-center justify-center gap-2 transition-colors cursor-pointer shadow-lg"
               >
                 <MessageCircle className="w-4 h-4" />
-                <span>Notify Church Admin on WhatsApp (+91 80569 69614)</span>
+                <span>Notify Church Admin on WhatsApp ({churchData.socials.phone})</span>
               </button>
 
               <button

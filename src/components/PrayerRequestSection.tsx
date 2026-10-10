@@ -66,7 +66,7 @@ export const PrayerRequestSection: React.FC = () => {
 
   const handleNotifyWhatsApp = () => {
     if (!lastSubmittedData) return;
-    const msg = `Praise the Lord Pastor Rajan Joel & UPC Bodi 🙏\n\n*NEW PRAYER REQUEST SUBMITTED ON WEBSITE:*\n• *Name:* ${lastSubmittedData.name}\n• *Phone:* ${lastSubmittedData.phone || 'N/A'}\n• *Category:* ${lastSubmittedData.category}\n• *Prayer Need:* ${lastSubmittedData.text}\n\n_Sent to: upcbodi@gmail.com & +91 80569 69614_`;
+    const msg = `Praise the Lord Pastor Rajan Joel & UPC Bodi 🙏\n\n*NEW PRAYER REQUEST SUBMITTED ON WEBSITE:*\n• *Name:* ${lastSubmittedData.name}\n• *Phone:* ${lastSubmittedData.phone || 'N/A'}\n• *Category:* ${lastSubmittedData.category}\n• *Prayer Need:* ${lastSubmittedData.text}\n\n_Sent to: ${churchData.socials.email} & ${churchData.socials.phone}_`;
     const url = `https://api.whatsapp.com/send?phone=${churchData.socials.whatsappNumber}&text=${encodeURIComponent(msg)}`;
     window.open(url, '_blank');
   };
@@ -140,7 +140,7 @@ export const PrayerRequestSection: React.FC = () => {
                   className="w-full bg-[#25D366] hover:bg-[#20ba59] text-white py-3.5 px-4 font-heading font-bold uppercase tracking-wider text-xs flex items-center justify-center gap-2 transition-colors cursor-pointer shadow-lg"
                 >
                   <MessageCircle className="w-4 h-4" />
-                  <span>Notify Pastor On WhatsApp Directly (+91 80569 69614)</span>
+                  <span>Notify Pastor On WhatsApp Directly ({churchData.socials.phone})</span>
                 </button>
 
                 <button
