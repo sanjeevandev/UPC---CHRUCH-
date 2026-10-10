@@ -1,12 +1,13 @@
 import { churchData } from '../data/churchData';
-import { MapPin, Heart } from 'lucide-react';
+import { MapPin, Heart, Lock } from 'lucide-react';
 
 interface FooterProps {
   onOpenPlanVisit: () => void;
   onOpenLocation: () => void;
+  onOpenAdminPortal?: () => void;
 }
 
-export const Footer = ({ onOpenPlanVisit, onOpenLocation }: FooterProps) => {
+export const Footer = ({ onOpenPlanVisit, onOpenLocation, onOpenAdminPortal }: FooterProps) => {
   return (
     <footer className="bg-black text-white border-t border-neutral-800 pt-16 pb-12">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -173,9 +174,21 @@ export const Footer = ({ onOpenPlanVisit, onOpenLocation }: FooterProps) => {
         {/* Bottom Copyright */}
         <div className="border-t border-neutral-900 pt-8 flex flex-col sm:flex-row items-center justify-between text-xs text-neutral-500 gap-4">
           <p>© {new Date().getFullYear()} {churchData.name}. All Rights Reserved.</p>
-          <p className="flex items-center gap-1">
-            Built with <Heart className="w-3.5 h-3.5 text-[#dd5234] fill-[#dd5234]" /> for God's Kingdom
-          </p>
+          <div className="flex items-center gap-6">
+            <p className="flex items-center gap-1">
+              Built with <Heart className="w-3.5 h-3.5 text-[#dd5234] fill-[#dd5234]" /> for God's Kingdom
+            </p>
+            {onOpenAdminPortal && (
+              <button
+                onClick={onOpenAdminPortal}
+                className="text-neutral-500 hover:text-white transition-colors flex items-center gap-1.5 cursor-pointer font-medium"
+                title="Church Staff & Pastor Login"
+              >
+                <Lock className="w-3 h-3 text-[#dd5234]" />
+                <span>Staff Portal</span>
+              </button>
+            )}
+          </div>
         </div>
       </div>
     </footer>

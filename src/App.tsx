@@ -11,10 +11,12 @@ import { DailyPromiseSection } from './components/DailyPromiseSection';
 import { SectionDividerRibbon } from './components/SectionDividerRibbon';
 import { MinistriesSection } from './components/MinistriesSection';
 import { YouthLeaderSection } from './components/YouthLeaderSection';
+import { UpcomingEventsSection } from './components/UpcomingEventsSection';
 import { PrayerRequestSection } from './components/PrayerRequestSection';
 import { Footer } from './components/Footer';
 import { PlanVisitModal } from './components/PlanVisitModal';
 import { LocationModal } from './components/LocationModal';
+import { AdminPortalModal } from './components/AdminPortalModal';
 import { WhatsAppFloatingHotline } from './components/WhatsAppFloatingHotline';
 import { ArrowUp } from 'lucide-react';
 
@@ -22,6 +24,7 @@ export function App() {
   const [planVisitOpen, setPlanVisitOpen] = useState(false);
   const [planWithKids, setPlanWithKids] = useState(false);
   const [locationOpen, setLocationOpen] = useState(false);
+  const [adminPortalOpen, setAdminPortalOpen] = useState(false);
   const [showScrollTop, setShowScrollTop] = useState(false);
 
   useEffect(() => {
@@ -105,13 +108,20 @@ export function App() {
         onOpenPlanVisit={() => handleOpenPlanVisit(false)}
       />
 
-      {/* 12. Prayer Request & Intercession */}
+      {/* 12. Upcoming Events & Special Services (Dynamic & Admin-Manageable) */}
+      <UpcomingEventsSection
+        onOpenAdminPortal={() => setAdminPortalOpen(true)}
+        onOpenPlanVisit={() => handleOpenPlanVisit(false)}
+      />
+
+      {/* 13. Prayer Request & Intercession */}
       <PrayerRequestSection />
 
-      {/* 13. Mega Footer */}
+      {/* 14. Mega Footer */}
       <Footer
         onOpenPlanVisit={() => handleOpenPlanVisit(false)}
         onOpenLocation={() => setLocationOpen(true)}
+        onOpenAdminPortal={() => setAdminPortalOpen(true)}
       />
 
       {/* Interactive Modals */}
@@ -124,6 +134,11 @@ export function App() {
       <LocationModal
         isOpen={locationOpen}
         onClose={() => setLocationOpen(false)}
+      />
+
+      <AdminPortalModal
+        isOpen={adminPortalOpen}
+        onClose={() => setAdminPortalOpen(false)}
       />
 
       {/* Floating WhatsApp Prayer & Help Hotline */}
