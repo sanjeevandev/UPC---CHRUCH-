@@ -110,7 +110,6 @@ export function App() {
 
       {/* 12. Upcoming Events & Special Services (Dynamic & Admin-Manageable) */}
       <UpcomingEventsSection
-        onOpenAdminPortal={() => setAdminPortalOpen(true)}
         onOpenPlanVisit={() => handleOpenPlanVisit(false)}
       />
 

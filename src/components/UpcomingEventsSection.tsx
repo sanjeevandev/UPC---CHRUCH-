@@ -8,17 +8,15 @@ import {
   Sparkles,
   MessageCircle,
   CalendarPlus,
-  Lock,
   ChevronRight
 } from 'lucide-react';
 
 interface UpcomingEventsSectionProps {
-  onOpenAdminPortal: () => void;
   onOpenPlanVisit: () => void;
+  onOpenAdminPortal?: () => void;
 }
 
 export const UpcomingEventsSection: React.FC<UpcomingEventsSectionProps> = ({
-  onOpenAdminPortal,
   onOpenPlanVisit,
 }) => {
   const [events, setEvents] = useState<ChurchEvent[]>(getSavedEvents);
@@ -72,18 +70,6 @@ export const UpcomingEventsSection: React.FC<UpcomingEventsSectionProps> = ({
             <p className="mt-2 text-sm text-neutral-600 max-w-2xl">
               Stay connected with our spirit-filled revival nights, harvest celebrations, youth rallies, and special church services in Bodi.
             </p>
-          </div>
-
-          {/* Admin Portal Action & Filter */}
-          <div className="flex flex-wrap items-center gap-3">
-            <button
-              onClick={onOpenAdminPortal}
-              className="bg-[#111111] hover:bg-[#dd5234] text-white px-3.5 py-2 font-heading font-bold uppercase tracking-wider text-xs flex items-center gap-2 transition-colors cursor-pointer shadow-sm"
-              title="Staff & Pastor Management Portal"
-            >
-              <Lock className="w-3.5 h-3.5 text-amber-300" />
-              <span>Staff Portal</span>
-            </button>
           </div>
         </div>
 
