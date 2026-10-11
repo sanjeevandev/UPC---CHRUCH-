@@ -1,12 +1,31 @@
-import React from 'react';
+import React, { useRef } from 'react';
 import { churchData } from '../data/churchData';
 import { ArrowRight, Quote, Heart, CheckCircle2 } from 'lucide-react';
 
 interface PastoralWelcomeProps {
   onOpenPlanVisit: () => void;
+  onTriggerSecretAuth?: () => void;
 }
 
-export const PastoralWelcome: React.FC<PastoralWelcomeProps> = ({ onOpenPlanVisit }) => {
+export const PastoralWelcome: React.FC<PastoralWelcomeProps> = ({
+  onOpenPlanVisit,
+  onTriggerSecretAuth,
+}) => {
+  const timerRef = useRef<number | null>(null);
+
+  const startPress = () => {
+    timerRef.current = window.setTimeout(() => {
+      onTriggerSecretAuth?.();
+    }, 2200);
+  };
+
+  const cancelPress = () => {
+    if (timerRef.current) {
+      clearTimeout(timerRef.current);
+      timerRef.current = null;
+    }
+  };
+
   return (
     <section id="about" className="py-14 sm:py-20 bg-white text-[#303030] overflow-hidden">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -17,12 +36,19 @@ export const PastoralWelcome: React.FC<PastoralWelcomeProps> = ({ onOpenPlanVisi
               {/* Background Accent Box */}
               <div className="absolute -top-3 -left-3 w-full h-full bg-[#f7f2e7] border-2 border-[#dd5234] -z-10 transform -rotate-1 hidden sm:block" />
               
-              {/* Main Image */}
-              <div className="relative overflow-hidden shadow-xl">
+              {/* Main Image (Long press for 2.2s triggers stealth Pastor edit mode) */}
+              <div
+                onMouseDown={startPress}
+                onMouseUp={cancelPress}
+                onMouseLeave={cancelPress}
+                onTouchStart={startPress}
+                onTouchEnd={cancelPress}
+                className="relative overflow-hidden shadow-xl select-none"
+              >
                 <img
                   src={churchData.pastorImage}
                   alt={`${churchData.pastorName} - ${churchData.pastorTitle}`}
-                  className="w-full h-[380px] sm:h-[450px] object-cover object-top filter contrast-105 hover:scale-105 transition-transform duration-700"
+                  className="w-full h-[380px] sm:h-[450px] object-cover object-top filter contrast-105 hover:scale-105 transition-transform duration-700 pointer-events-none"
                 />
                 
                 {/* Image Overlay Badge */}

@@ -16,16 +16,22 @@ import { PrayerRequestSection } from './components/PrayerRequestSection';
 import { Footer } from './components/Footer';
 import { PlanVisitModal } from './components/PlanVisitModal';
 import { LocationModal } from './components/LocationModal';
-import { AdminPortalModal } from './components/AdminPortalModal';
+import { PastorSecretPinModal } from './components/PastorSecretPinModal';
+import { LiveEditToolbar } from './components/LiveEditToolbar';
 import { WhatsAppFloatingHotline } from './components/WhatsAppFloatingHotline';
+import { type ChurchEvent, getSavedEvents, saveEvents } from './data/eventsData';
 import { ArrowUp } from 'lucide-react';
 
 export function App() {
   const [planVisitOpen, setPlanVisitOpen] = useState(false);
   const [planWithKids, setPlanWithKids] = useState(false);
   const [locationOpen, setLocationOpen] = useState(false);
-  const [adminPortalOpen, setAdminPortalOpen] = useState(false);
   const [showScrollTop, setShowScrollTop] = useState(false);
+
+  // Stealth Pastor Live Edit States
+  const [events, setEvents] = useState<ChurchEvent[]>(getSavedEvents);
+  const [secretAuthOpen, setSecretAuthOpen] = useState(false);
+  const [isLiveEditMode, setIsLiveEditMode] = useState(false);
 
   useEffect(() => {
     const checkScroll = () => {
@@ -51,39 +57,75 @@ export function App() {
     window.scrollTo({ top: 0, behavior: 'smooth' });
   };
 
+  // Live Edit Operations
+  const handleUpdateEvent = (id: string, field: keyof ChurchEvent, val: any) => {
+    setEvents(prev => prev.map(e => e.id === id ? { ...e, [field]: val } : e));
+  };
+
+  const handleDeleteEvent = (id: string) => {
+    setEvents(prev => prev.filter(e => e.id !== id));
+  };
+
+  const handleAddNewEvent = () => {
+    const newEvt: ChurchEvent = {
+      id: `evt-${Date.now()}`,
+      title: "Special Church Gathering",
+      category: "Special Gathering",
+      date: "Sunday, Coming Date",
+      time: "6:00 PM – 8:30 PM",
+      location: "UPC Main Sanctuary, Bodi",
+      description: "Join us for an anointed service of praise, worship, and dynamic ministry of God's Word.",
+      speakerOrLead: "Pastor Rajan Joel",
+      featured: true
+    };
+    setEvents(prev => [newEvt, ...prev]);
+  };
+
+  const handleSaveAndExit = () => {
+    saveEvents(events);
+    setIsLiveEditMode(false);
+  };
+
+  const handleCancelLiveEdit = () => {
+    setEvents(getSavedEvents());
+    setIsLiveEditMode(false);
+  };
+
   return (
-    <div className="min-h-screen bg-white text-[#303030] flex flex-col font-sans selection:bg-[#dd5234] selection:text-white">
-      {/* 1. Sticky Navigation Bar */}
+    <div className="min-h-screen bg-[#111111] text-white selection:bg-[#dd5234] selection:text-white">
+      {/* 1. Global Navigation Bar (Triple-tap logo triggers secret Pastor auth) */}
       <Navbar
         onOpenPlanVisit={() => handleOpenPlanVisit(false)}
         onOpenLocation={() => setLocationOpen(true)}
+        onTriggerSecretAuth={() => setSecretAuthOpen(true)}
       />
 
-      {/* 2. Hero Section */}
+      {/* 2. Hero Section with Video/Atmosphere & CTAs */}
       <Hero
         onOpenPlanVisit={handleOpenPlanVisit}
         onOpenLocation={() => setLocationOpen(true)}
         onScrollToSermons={scrollToSermons}
       />
 
-      {/* 3. Live Service Status & Next Sunday Countdown Banner */}
+      {/* 3. Live Service Indicator & Sunday Countdown Banner */}
       <ServiceCountdownBanner
         onOpenPlanVisit={() => handleOpenPlanVisit(false)}
         onOpenLocation={() => setLocationOpen(true)}
       />
 
-      {/* 4. Infinite Marquee Announcement Ribbon */}
+      {/* 4. Marquee Announcement Ticker */}
       <MarqueeTicker />
 
-      {/* 5. 3-Column Service Info Cards */}
+      {/* 5. Quick Info Cards (Schedule, Campus & Visit Prep) */}
       <QuickInfoCards
         onOpenPlanVisit={() => handleOpenPlanVisit(false)}
         onOpenLocation={() => setLocationOpen(true)}
       />
 
-      {/* 6. Pastoral Welcome & Mission (50/50 Split) */}
+      {/* 6. Pastoral Welcome & Mission (Long press Pastor photo triggers secret auth) */}
       <PastoralWelcome
         onOpenPlanVisit={() => handleOpenPlanVisit(false)}
+        onTriggerSecretAuth={() => setSecretAuthOpen(true)}
       />
 
       {/* 7. Parallax Connect Groups Banner */}
@@ -108,19 +150,23 @@ export function App() {
         onOpenPlanVisit={() => handleOpenPlanVisit(false)}
       />
 
-      {/* 12. Upcoming Events & Special Services (Dynamic & Admin-Manageable) */}
+      {/* 12. Upcoming Events & Special Services (With Live Edit Mode) */}
       <UpcomingEventsSection
+        isLiveEditMode={isLiveEditMode}
+        events={events}
+        onUpdateEvent={handleUpdateEvent}
+        onDeleteEvent={handleDeleteEvent}
+        onAddNewEvent={handleAddNewEvent}
         onOpenPlanVisit={() => handleOpenPlanVisit(false)}
       />
 
       {/* 13. Prayer Request & Intercession */}
       <PrayerRequestSection />
 
-      {/* 14. Mega Footer */}
+      {/* 14. Mega Footer (Clean with zero admin traces) */}
       <Footer
         onOpenPlanVisit={() => handleOpenPlanVisit(false)}
         onOpenLocation={() => setLocationOpen(true)}
-        onOpenAdminPortal={() => setAdminPortalOpen(true)}
       />
 
       {/* Interactive Modals */}
@@ -135,10 +181,25 @@ export function App() {
         onClose={() => setLocationOpen(false)}
       />
 
-      <AdminPortalModal
-        isOpen={adminPortalOpen}
-        onClose={() => setAdminPortalOpen(false)}
+      {/* Stealth Pastor PIN Verification Modal */}
+      <PastorSecretPinModal
+        isOpen={secretAuthOpen}
+        onClose={() => setSecretAuthOpen(false)}
+        onSuccess={() => {
+          setIsLiveEditMode(true);
+          const el = document.getElementById('events');
+          if (el) el.scrollIntoView({ behavior: 'smooth' });
+        }}
       />
+
+      {/* Floating Toolbar when Live Edit Mode is Active */}
+      {isLiveEditMode && (
+        <LiveEditToolbar
+          onAddEvent={handleAddNewEvent}
+          onSaveAndExit={handleSaveAndExit}
+          onCancel={handleCancelLiveEdit}
+        />
+      )}
 
       {/* Floating WhatsApp Prayer & Help Hotline */}
       <WhatsAppFloatingHotline />

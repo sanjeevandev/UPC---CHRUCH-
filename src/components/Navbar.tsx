@@ -5,11 +5,24 @@ import { churchData } from '../data/churchData';
 interface NavbarProps {
   onOpenPlanVisit: () => void;
   onOpenLocation: () => void;
+  onTriggerSecretAuth?: () => void;
 }
 
-export const Navbar: React.FC<NavbarProps> = ({ onOpenPlanVisit, onOpenLocation }) => {
+export const Navbar: React.FC<NavbarProps> = ({ onOpenPlanVisit, onOpenLocation, onTriggerSecretAuth }) => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [logoClicks, setLogoClicks] = useState<number[]>([]);
+
+  const handleLogoClick = (e: React.MouseEvent) => {
+    const now = Date.now();
+    const recent = [...logoClicks, now].filter(t => now - t < 1200);
+    setLogoClicks(recent);
+    if (recent.length >= 3) {
+      e.preventDefault();
+      setLogoClicks([]);
+      onTriggerSecretAuth?.();
+    }
+  };
 
   useEffect(() => {
     const handleScroll = () => {
@@ -39,8 +52,13 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenPlanVisit, onOpenLocation 
         }`}
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between">
-          {/* Logo / Brand */}
-          <a href="#" className="flex items-center gap-2.5 group focus:outline-none">
+          {/* Logo / Brand (Triple-tap triggers Pastor Secret Auth) */}
+          <a
+            href="#"
+            onClick={handleLogoClick}
+            className="flex items-center gap-2.5 group focus:outline-none cursor-pointer"
+            title="UPC Bodi"
+          >
             <div className="w-10 h-10 rounded-full overflow-hidden bg-white p-0.5 border-2 border-[#dd5234] flex items-center justify-center transition-transform group-hover:scale-105 shadow-md shrink-0">
               <img
                 src={churchData.logo}
