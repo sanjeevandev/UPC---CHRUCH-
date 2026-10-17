@@ -35,7 +35,7 @@ export const MinistriesSection: React.FC<MinistriesSectionProps> = ({ onOpenPlan
                   <img
                     src={ministry.image}
                     alt={ministry.title}
-                    className={`w-full h-full object-cover ${ministry.imagePosition || 'object-center'} ${ministry.imagePosition === 'object-top' ? 'origin-top' : ''} group-hover:scale-105 transition-transform duration-500 filter brightness-95`}
+                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 filter brightness-95"
                   />
                   <div className="absolute top-2.5 left-2.5 bg-black/80 backdrop-blur-sm text-white px-2 py-0.5 text-[9px] font-heading font-bold uppercase tracking-widest">
                     {ministry.category}
