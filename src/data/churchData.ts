@@ -80,7 +80,7 @@ export interface ChurchInfo {
 }
 
 export const churchData: ChurchInfo = {
-  name: "UNITED PENTECOSTAL CHURCH",
+  name: "UNITED PENTECOSTAL CHURCH - BODI",
   shortName: "UPC",
   logo: "/upc-logo.jpg",
   tagline: "NO ONE SHOULD WALK THROUGH LIFE ALONE",

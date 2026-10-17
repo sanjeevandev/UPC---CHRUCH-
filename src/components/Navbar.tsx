@@ -71,7 +71,7 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenPlanVisit, onOpenLocation,
                 {churchData.shortName}
               </span>
               <span className="text-[10px] text-[#dd5234] uppercase tracking-widest font-semibold font-heading">
-                UNITED PENTECOSTAL CHURCH
+                UNITED PENTECOSTAL CHURCH - BODI
               </span>
             </div>
           </a>
