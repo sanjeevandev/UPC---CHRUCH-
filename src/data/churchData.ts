@@ -43,6 +43,7 @@ export interface ChurchInfo {
     description: string;
     image: string;
     category: string;
+    imagePosition?: string;
   }[];
   latestSermon: {
     title: string;
@@ -167,7 +168,8 @@ export const churchData: ChurchInfo = {
       title: "Youth Prayer & Ministry",
       description: "Empowering the next generation with weekly youth prayer every Sunday at 1:00 PM for spiritual fire and purpose.",
       image: "/youth-leader-goodwin.jpg",
-      category: "Every Sunday 1:00 PM"
+      category: "Every Sunday 1:00 PM",
+      imagePosition: "object-top"
     },
     {
       title: "Women's Prayer Fellowship",
